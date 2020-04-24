@@ -1,0 +1,220 @@
+body {
+    background-color: black;
+    margin: 0 8px;
+    padding: 0;
+    text-align: center;
+    color: rgb(220, 220, 220);
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    /* font-family: 'Roboto Slab'; */
+    font-family: 'Lato', sans-serif;
+}
+
+header div {
+    display: inline;
+    position: relative;
+}
+
+section {
+    display: flex;
+    align-items: flex-start;
+}
+
+a {
+    color: rgb(219, 219, 219);
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.div {
+    margin-top: 8px;
+    color: rgb(219, 219, 219);
+    background-color: rgb(40, 40, 40);
+    border: 1px solid rgb(80, 80, 80);
+    overflow: hidden;
+}
+
+.title {
+    text-align: center;
+    font-size: larger;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.sessionMenu {
+    position: absolute;
+    top: 10px;
+    right: 13px;
+}
+
+.menuItems {
+    display: none;
+    text-align: left;
+    position: absolute;
+    background-color: rgb(68, 68, 68);
+    top: 25px;
+    right: -5px;
+    z-index: 1;
+    border: 1px solid rgb(134, 134, 134);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.menuItems li:hover {
+    background-color: rgb(134, 134, 134);
+    color: white;
+}
+
+.menuItems a {
+    padding: 12px 16px;
+}
+
+.loginForm {
+    margin: 0 auto;
+    padding: 20px 20px 0 20px;
+    background-color: rgb(68, 68, 68);
+    max-width: 300px;
+    border-radius: 10px;
+    border: 1px solid rgb(134, 134, 134);
+}
+
+.loginForm input {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.loginForm input[type="submit"], .loginForm input[type="button"] {
+    width: 100%;
+}
+
+.leftDiv {
+    width: 18%
+}
+
+.totalConfirmedDiv {
+    height: 16.5vh;
+    padding: 15px 5px 5px 5px;
+}
+
+.totalConfirmedCount {
+    font-size: 2.5vmax;
+    font-weight: 700;
+    color: rgb(225, 0, 0);
+}
+
+.countryTable {
+    height: 75vh;
+}
+
+.centerDiv {
+    width: 52%;
+    margin-left: 8px;
+}
+
+.mapDiv {
+    height: 75.5vh;
+}
+
+.creditsDiv {
+    height: 16vh;
+}
+
+.rightDiv {
+    width: 30%;
+    margin-left: 8px;
+}
+
+.tableDiv {
+    height: 51.5vh;
+}
+
+.graphDiv {
+    height: 40vh;
+}
+
+.tabButton {
+    padding: 5px 0;
+    width: 50%;
+    font-weight: bold;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: rgb(40, 40, 40);
+    color: rgb(190, 190, 190);
+}
+
+.tabContent {
+    position: absolute;
+    top: 84px;
+}
+
+.tabContentDiv {
+    padding: 0 5vw;
+}
+
+.tabButton:hover {
+    background-color: rgb(80, 80, 80);
+    cursor: pointer;
+}
+
+.activeTab {
+    background-color: rgb(30, 30, 30);
+    outline: none;
+    border-top: 1px solid white;
+}
+
+.tabButton:focus {
+    outline: none;
+}
+
+#deathsButton:focus .recoveredDiv {
+    display: none;
+}
+#deathsButton:focus .deathsDiv {
+    display: block;
+}
+
+
+#recoveredButton:focus .deathsDiv {
+    display: none;
+}
+#recoveredButton:focus .recoveredDiv {
+    display: block;
+}
+
+
+.recoveredDiv {
+    display: none;
+}
+
+.totalDeaths {
+    width: 50%;
+    max-height: 500px;
+}
+
+.totalDeathsCount {
+    font-size: 2.5vmax;
+    font-weight: 700;
+    color: white;
+}
+
+.totalRecovered {
+    width: 50%;
+    margin-left: 8px;
+}
+
+.totalRecoveredCount {
+    font-size: 2.5vmax;
+    font-weight: 700;
+    color: rgb(112, 168, 0);
+}
