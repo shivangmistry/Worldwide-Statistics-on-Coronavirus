@@ -18,7 +18,7 @@ exports.record_get = function (req, res) {
 
         else {
             console.log("Successfully retrieved  details from the cluster");
-            console.log(data);
+            // console.log(data);
             res.send(data);
             }
 

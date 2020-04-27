@@ -30,27 +30,29 @@
     </header>
     <section>
         <div class="leftDiv">
-            <div class="div totalConfirmedDiv">
+            <div class="div totalConfirmedDiv" id="worldData" onclick="changeCountry()">
                 Total Confirmed<br>
                 <span class="totalConfirmedCount">
                     2,456,890
                 </span>
             </div>
-            <div class="div countryTable">
-                Country wise table
+            <div class="div countryTableDiv">
+                <table id="countryTable">
+                    <thead>
+                    <tr id="countryTableHeader">
+                        <th colspan="2">
+                            Confirmed Cases by Country/Region/Sovereignty
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="countryTableBody">
+
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="centerDiv">
             <div class="div mapDiv" id="map">
-                <!-- <script>
-                    var map;
-                    function initMap() {
-                        map = new google.maps.Map(document.getElementById('map'), {
-                            center: { lat: -34.397, lng: 150.644 },
-                            zoom: 8
-                        });
-                    }
-                </script> -->
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnFY9KoVBajKdQ1CRzvwCmDJxS4YWUP1I&callback=initMap" async defer></script>
             </div>
             <div class="div creditsDiv">
