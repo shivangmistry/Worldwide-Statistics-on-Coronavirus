@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-let CaseSchema = new mongoose.Schema({
+const RecordSchema = new Schema({
     _id: mongoose.Types.ObjectId,
     Date: String,  
     Province: String,
@@ -10,6 +11,12 @@ let CaseSchema = new mongoose.Schema({
     Recovered: Number,
     Latitude: String,
     Longitude: String
+
+   
 });
 
-module.exports = mongoose.model("Case", CaseSchema);
+
+
+
+// Export the model
+module.exports = mongoose.model('records', RecordSchema);
