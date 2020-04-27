@@ -35,6 +35,27 @@ ul {
     list-style-type: none;
 }
 
+/* scrollbar - start */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(150, 150, 150); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(200, 200, 200);
+}
+
+/* srollbar - end */
+
 .div {
     margin-top: 8px;
     color: rgb(219, 219, 219);
@@ -102,16 +123,56 @@ ul {
 .totalConfirmedDiv {
     height: 16.5vh;
     padding: 15px 5px 5px 5px;
+    cursor: pointer;
 }
 
 .totalConfirmedCount {
     font-size: 2.5vmax;
     font-weight: 700;
-    color: rgb(225, 0, 0);
+    color: rgb(210, 0, 0);
 }
 
-.countryTable {
+.countryTableDiv {
     height: 75vh;
+}
+
+#countryTable tbody {
+    display: block;
+    max-height: 65.7vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#countryTable thead, #countryTable tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-bottom: 1px solid rgb(80, 80, 80);
+}
+
+#countryTable th {
+    background-color: rgb(30, 30, 30);
+    padding: 10px 0;
+}
+
+#countryTable tr:hover {
+    cursor: pointer;
+}
+
+#countryTable tr th:hover {
+    cursor: auto;
+}
+
+.countrywiseConfirmed {
+    color: rgb(210, 0, 0);
+    font-weight: bold;
+}
+
+.countrywiseCountry {
+    float: left;
+}
+
+.activeCountry {
+    background-color: royalblue;
 }
 
 .centerDiv {
