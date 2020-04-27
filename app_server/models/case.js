@@ -10,13 +10,8 @@ const RecordSchema = new Schema({
     Deaths: Number,
     Recovered: Number,
     Latitude: String,
-    Longitude: String
-
-   
+    Longitude: String   
 });
-
-
-
 
 // Export the model
 module.exports = mongoose.model('records', RecordSchema);

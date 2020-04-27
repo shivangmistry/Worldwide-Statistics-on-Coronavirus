@@ -9,7 +9,8 @@ function initData() {
   currentCountry = "worldData";
   
   $.get('/data', (data, status) => {
-    console.log(data + status);
+    console.log(data)
+    console.log(status);
   });
 
   const data = [
