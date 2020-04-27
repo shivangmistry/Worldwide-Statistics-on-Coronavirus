@@ -12,6 +12,10 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+// mongoose.connect('mongodb+srv://shivang:6692934122@cluster0-xnffp.mongodb.net/test?retryWrites=true&w=majority',() =>{
+//     console.log('Connected to DB successfully');
+// })
+
 
 const app = express();
 

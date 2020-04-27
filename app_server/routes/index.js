@@ -11,9 +11,9 @@ const cors = require("cors");
 router.get('/test',  recordRoutes.test);
 router.get('/data', recordRoutes.record_get);
 
-router.get('/', (req, res) => {
-    res.sendFile('index.html', {root});
-});
+// router.get('/', (req, res) => {
+//     res.sendFile('index.html', {root});
+// });
 
 // router.get('/data', (req, res) => {
 //     Case.findOne({"Country":"China"}, function(err, result){
@@ -32,8 +32,8 @@ router.get('/', (req, res) => {
 //     });
 // });
 
-router.get('*', (req, res) => {
-    res.sendFile('index.html', {root});
-});
+// router.get('*', (req, res) => {
+//     res.sendFile('index.html', {root});
+// });
 
 module.exports = router;
