@@ -53,7 +53,6 @@ ul {
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(200, 200, 200);
 }
-
 /* srollbar - end */
 
 .div {
@@ -61,7 +60,9 @@ ul {
     color: rgb(219, 219, 219);
     background-color: rgb(40, 40, 40);
     border: 1px solid rgb(80, 80, 80);
+    border-radius: 3px;
     overflow: hidden;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 .title {
@@ -71,21 +72,23 @@ ul {
     letter-spacing: 1px;
 }
 
+/* dropdown - start */
 .sessionMenu {
     position: absolute;
     top: 10px;
-    right: 13px;
+    left: 13px;
 }
 
 .menuItems {
     display: none;
+    width: max-content;
     text-align: left;
     position: absolute;
     background-color: rgb(68, 68, 68);
     top: 25px;
-    right: -5px;
     z-index: 1;
     border: 1px solid rgb(134, 134, 134);
+    border-radius: 3px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
@@ -97,6 +100,7 @@ ul {
 .menuItems a {
     padding: 12px 16px;
 }
+/* dropdown - end */
 
 .loginForm {
     margin: 0 auto;
@@ -116,95 +120,27 @@ ul {
     width: 100%;
 }
 
+/* left div - start */
 .leftDiv {
-    width: 18%
-}
-
-.totalConfirmedDiv {
-    height: 16.5vh;
-    padding: 15px 5px 5px 5px;
-    cursor: pointer;
-}
-
-.totalConfirmedCount {
-    font-size: 2.5vmax;
-    font-weight: 700;
-    color: rgb(210, 0, 0);
-}
-
-.countryTableDiv {
-    height: 75vh;
-}
-
-#countryTable tbody {
-    display: block;
-    max-height: 65.7vh;
-    overflow-y: auto;
+    width: 20%;
     overflow-x: hidden;
 }
-#countryTable thead, #countryTable tbody tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    border-bottom: 1px solid rgb(80, 80, 80);
-}
 
-#countryTable th {
+.tabButtonsDiv {
+    height: 92.5vh;
     background-color: rgb(30, 30, 30);
-    padding: 10px 0;
 }
 
-#countryTable tr:hover {
-    cursor: pointer;
-}
-
-#countryTable tr th:hover {
-    cursor: auto;
-}
-
-.countrywiseConfirmed {
-    color: rgb(210, 0, 0);
-    font-weight: bold;
-}
-
-.countrywiseCountry {
+.fa-globe {
+    padding-top: 5px;
+    width: 10%;
     float: left;
-}
-
-.activeCountry {
-    background-color: royalblue;
-}
-
-.centerDiv {
-    width: 52%;
-    margin-left: 8px;
-}
-
-.mapDiv {
-    height: 75.5vh;
-}
-
-.creditsDiv {
-    height: 16vh;
-}
-
-.rightDiv {
-    width: 30%;
-    margin-left: 8px;
-}
-
-.tableDiv {
-    height: 51.5vh;
-}
-
-.graphDiv {
-    height: 40vh;
+    cursor: pointer;
 }
 
 .tabButton {
-    padding: 5px 0;
-    width: 50%;
-    font-weight: bold;
+    width: 30%;
+    font-size: 1vw;
     float: left;
     border: none;
     outline: none;
@@ -214,18 +150,13 @@ ul {
     color: rgb(190, 190, 190);
 }
 
-.tabContent {
-    position: absolute;
-    top: 84px;
-}
-
-.tabContentDiv {
-    padding: 0 5vw;
-}
-
 .tabButton:hover {
     background-color: rgb(80, 80, 80);
     cursor: pointer;
+}
+
+.tabButton:focus {
+    outline: none;
 }
 
 .activeTab {
@@ -234,48 +165,108 @@ ul {
     border-top: 1px solid white;
 }
 
-.tabButton:focus {
-    outline: none;
+.tabContent {
+    position: absolute;
+    top: 69.5px;
+    left: 9px
 }
 
-#deathsButton:focus .recoveredDiv {
+.tableDiv {
+    padding-top: 15px;
+    width: 19.5%;
+}
+
+.deathsDiv {
     display: none;
 }
-#deathsButton:focus .deathsDiv {
-    display: block;
-}
-
-
-#recoveredButton:focus .deathsDiv {
-    display: none;
-}
-#recoveredButton:focus .recoveredDiv {
-    display: block;
-}
-
 
 .recoveredDiv {
     display: none;
 }
 
-.totalDeaths {
-    width: 50%;
-    max-height: 500px;
-}
-
-.totalDeathsCount {
+.totalCountFigure {
     font-size: 2.5vmax;
     font-weight: 700;
+    
+}
+
+tbody.casesTableBody {
+    display: block;
+    overflow: auto;
+    height: 67.2vh;
+    width: 100%;
+    background-color: rgb(40, 40, 40);
+}
+.casesTable thead, tbody.casesTableBody tr {
+    display: block;
+    border-bottom: 1px solid rgb(80, 80, 80);
+}
+
+.casesTable th {
+    border-top: 1px solid rgb(80, 80, 80);
+    background-color: rgb(30, 30, 30);
+    padding: 10px 0;
+}
+
+.casesTable tr:hover {
+    cursor: pointer;
+}
+
+.casesTable tr th:hover {
+    cursor: auto;
+}
+
+.colorConfirmed {
+    color: rgb(210, 0, 0);
+}
+
+.colorDeaths {
     color: white;
 }
 
-.totalRecovered {
-    width: 50%;
+.colorRecovered {
+    color: rgb(112, 168, 0);
+}
+
+.countValue {
+    padding-left: 10px;
+}
+
+.countLocation {
+    padding-left: 10px;
+}
+/* left div - end */
+
+/* center div start */
+.centerDiv {
+    width: 58%;
     margin-left: 8px;
 }
 
-.totalRecoveredCount {
-    font-size: 2.5vmax;
-    font-weight: 700;
-    color: rgb(112, 168, 0);
+.mapDiv {
+    height: 61.5vh;
 }
+
+.graphDiv {
+    height: 30vh;
+}
+/* center div end */
+
+/* right div start */
+.rightDiv {
+    width: 22%;
+    margin-left: 8px;
+}
+
+.genderDiv {
+    height: 38vh;
+}
+
+.ageDiv {
+    height: 38vh;
+}
+
+.creditsDiv {
+    height: 14.4vh;
+}
+/* right div end */

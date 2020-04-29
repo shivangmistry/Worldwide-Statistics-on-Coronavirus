@@ -13,77 +13,105 @@
 <body>
     <header class="div">
         <div class="title">WORLDWIDE&nbsp;&nbsp;STATISTICS&nbsp;&nbsp;ON&nbsp;&nbsp;CORONAVIRUS</div>
-        <!-- <div class="sessionMenu">
+        <div class="sessionMenu">
             <ul>
-                <li class="notLoggedIn"><a href="login">LOGIN</a></li>
-                <li class="isLoggedIn"><a href="#"><i class="fa fa-align-justify"></i></a>
+                <li class="menuButton"><a href="#"><i class="fa fa-align-justify"></i></a>
                     <div class="menuItems">
                         <ul>
-                            <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Operations</a></li>
-                            <li><a href="#" onclick="handleLogout()">Logout</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Consult</a></li>
+                            <li><a href="#" class="notLoggedIn">Login</a></li>
+                            <li><a href="#" class="isLoggedIn">Add Case</a></li>
+                            <li><a href="#" class="isLoggedIn">Logout</a></li>
                         </ul>
                     </div>
                 </li>
             </ul>
-        </div> -->
+        </div>
     </header>
     <section>
         <div class="leftDiv">
-            <div class="div totalConfirmedDiv" id="worldData" onclick="changeCountry()">
-                Total Confirmed<br>
-                <span class="totalConfirmedCount">
-                    2,456,890
-                </span>
+            <div class="div tabButtonsDiv">
+                <i class="fa fa-globe" onclick="changeCountry()"></i>
+                <button class="tabButton activeTab" id="confirmedButton" onclick="confirmedData()">Confirmed</button>
+                <button class="tabButton" id="deathsButton" onclick="deathData()">Deaths</button>
+                <button class="tabButton" id="recoveredButton" onclick="recoveredData()">Recovered</button><br />
             </div>
-            <div class="div countryTableDiv">
-                <table id="countryTable">
-                    <thead>
-                    <tr id="countryTableHeader">
-                        <th colspan="2">
-                            Confirmed Cases by Country/Region/Sovereignty
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody id="countryTableBody">
-
-                    </tbody>
-                </table>
+            <!-- Confirmed Table -->
+            <div class="tabContent confirmedDiv tableDiv">
+                Total Confirmed<br />
+                <span class="totalCountFigure colorConfirmed">1,003,328</span>
+                <div>
+                    <table id="confirmedTable" class="casesTable">
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                    Confirmed Cases by Country/Province/Sovereignty
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="confirmedTableBody" class="casesTableBody">
+                    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Deaths Table -->
+            <div class="tabContent deathsDiv tableDiv">
+                Total Deaths<br />
+                <span class="totalCountFigure colorDeaths">190,861</span>
+                <div>
+                    <table id="deathsTable" class="casesTable">
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                    Confirmed Deaths by Country/Province/Sovereignty
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="deathsTableBody" class="casesTableBody">
+                    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Recovered Table -->
+            <div class="tabContent recoveredDiv tableDiv">
+                Total Recovered<br />
+                <span class="totalCountFigure colorRecovered">738,490</span>
+                <div>
+                    <table id="recoveredTable" class="casesTable">
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                    Recovered Cases by Country/Province/Sovereignty
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="recoveredTableBody" class="casesTableBody">
+                    
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="centerDiv">
             <div class="div mapDiv" id="map">
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnFY9KoVBajKdQ1CRzvwCmDJxS4YWUP1I&callback=initMap" async defer></script>
             </div>
-            <div class="div creditsDiv">
-                Credits
+            <div class="div graphDiv">
+                Graph
             </div>
         </div>
         <div class="rightDiv">
-            <div class="div tableDiv">
-                <div>
-                    <button class="tabButton activeTab" id="deathsButton" onclick="deathData()">Deaths</button>
-                    <button class="tabButton" id="recoveredButton" onclick="recoveredData()">Recovered</button><br />
-                </div>
-                <!-- Deaths Tab -->
-                <div class="tabContent deathsDiv">
-                    Total Deaths<br/>
-                    <span class="totalDeathsCount">190,861</span>
-                    <div>
-                        Table goes here
-                    </div>
-                </div>
-                <!-- Recovered Tab -->
-                <div class="tabContent recoveredDiv">
-                    Total Recovered<br />
-                    <span class="totalRecoveredCount">738,490</span>
-                    <div>
-                        Table goes here
-                    </div>
-                </div>
+            <div class="div genderDiv">
+                Gender wise graph
             </div>
-            <div class="div graphDiv">
-                GRAPH
+            <div class="div ageDiv">
+                Age wise graph
+            </div>
+            <div class="div creditsDiv">
+                Credits
             </div>
         </div>
     </section>

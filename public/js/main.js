@@ -9,6 +9,10 @@ $(document).init(() => {
     } else {
         $(".isLoggedIn").css("display", "none");
     }
+
+    $('.menuButton').hover(function() {
+        $('.menuItems').fadeToggle(300);
+    })
 })
 
 function goBack() {
