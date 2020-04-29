@@ -18,16 +18,18 @@
                 <li class="menuButton"><a href="#"><i class="fa fa-align-justify"></i></a>
                     <div class="menuItems">
                         <ul>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Consult</a></li>
-                            <li><a href="#" class="notLoggedIn">Login</a></li>
-                            <li><a href="#" class="isLoggedIn">Add Case</a></li>
-                            <li><a href="#" class="isLoggedIn">Logout</a></li>
+                            <li><a href="index.html">Dashboard</a></li>
+                            <li><a href="news.html">News</a></li>
+                            <li><a href="consult.html">Consult</a></li>
+                            <li><a href="login.html" class="notLoggedIn">Login</a></li>
+                            <li><a href="insert.html" class="isLoggedIn">Update Case</a></li>
+                            <li><a href="index.html" class="isLoggedIn" onclick="handlelogout()">Logout</a></li>
                         </ul>
                     </div>
                 </li>
             </ul>
         </div>
+        <script src="js/main.js"></script>
     </header>
     <section>
         <div class="leftDiv">
@@ -115,7 +117,6 @@
             </div>
         </div>
     </section>
-    <script src="js/main.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
