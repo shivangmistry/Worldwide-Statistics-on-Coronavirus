@@ -4,28 +4,7 @@ const Records= require('../models/case.js');
 
 exports.test = function (req, res)
 {
-    Records.aggregate([
-        {
-            $addFields: {
-                TotalCases:
-                    { $add: ["$Confirmed", "$Deaths", "$Recovered"] }
-            }
-        },
-        {
-            $group: {
-                _id:
-                    { "Date": "$Date" },
-                totalConfirmedCases: { $sum: "$TotalCases" }
-            }
-        },
-        {
-            $sort: { _id: 1 }
-        }
-
-    ], (err, result) => {
-        if(err) res.send("error")
-        res.send(result);
-    })
+    res.send("Test is working");
 };
 
 
