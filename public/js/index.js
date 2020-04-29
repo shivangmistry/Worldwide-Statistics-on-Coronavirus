@@ -1,5 +1,5 @@
 var map;
-var currentCountry;
+var currentCountry, countrySelected;
 
 // call when document is ready 
 $(initData);
@@ -7,11 +7,12 @@ $(initData);
 function initData() {
   
   currentCountry = "worldData";
+  countrySelected = false;
   
-  $.get('/data', (data, status) => {
-    console.log(data)
-    console.log(status);
-  });
+  // $.get('/data', (data, status) => {
+  //   console.log(data)
+  //   console.log(status);
+  // });
 
   const data = [
     { "confirmed": "963, 168", "country": "US" },
@@ -22,6 +23,16 @@ function initData() {
     { "confirmed": "154, 032", "country": "United Kingdom" },
     { "confirmed": "154, 032", "country": "United Arab Emirates" },
     { "confirmed": "110, 130", "country": "Turkey" },
+    { "confirmed": "110, 130", "country": "Turkey" },
+    { "confirmed": "110, 130", "country": "Turkey" },
+    { "confirmed": "110, 130", "country": "Turkey" },
+    { "confirmed": "110, 130", "country": "Turkey" },
+    { "confirmed": "110, 130", "country": "Turkey" },
+    { "confirmed": "110, 130", "country": "Turkey" },
+    { "confirmed": "110, 130", "country": "Turkey" },
+    { "confirmed": "110, 130", "country": "Turkey" },
+    { "confirmed": "110, 130", "country": "Turkey" },
+    { "confirmed": "110, 130", "country": "Turkey" },
     { "confirmed": "90, 481", "country": "Iran" },
     { "confirmed": "83, 909", "country": "China" },
     { "confirmed": "80, 949", "country": "Russia" },
@@ -29,21 +40,39 @@ function initData() {
     { "confirmed": "46, 866", "country": "Canada" },
     { "confirmed": "46, 134", "country": "Belgium" },
   ];
-  addCountryData(data);
+  addConfirmedData(data);
+  addDeathsData(data);
+  addRecoveredData(data);
 }
 
+// Table div switch
+function confirmedData() {
+  $(".confirmedDiv").css('display', 'block');
+  $(".deathsDiv").css('display', 'none');
+  $(".recoveredDiv").css('display', 'none');
+  $("#confirmedButton").addClass('activeTab');
+  $("#deathsButton").removeClass('activeTab');
+  $("#recoveredButton").removeClass('activeTab');
+}
+
+// Table div switch
 function deathData() {
-    $(".deathsDiv").css('display', 'block');
-    $(".recoveredDiv").css('display', 'none');
-    $("#deathsButton").addClass('activeTab');
-    $("#recoveredButton").removeClass('activeTab');
+  $(".confirmedDiv").css('display', 'none');
+  $(".deathsDiv").css('display', 'block');
+  $(".recoveredDiv").css('display', 'none');
+  $("#confirmedButton").removeClass('activeTab');
+  $("#deathsButton").addClass('activeTab');
+  $("#recoveredButton").removeClass('activeTab');
 }
 
+// Table div switch
 function recoveredData() {
-    $(".deathsDiv").css('display', 'none');
-    $(".recoveredDiv").css('display', 'block');
-    $("#deathsButton").removeClass('activeTab');
-    $("#recoveredButton").addClass('activeTab');
+  $(".confirmedDiv").css('display', 'none');
+  $(".deathsDiv").css('display', 'none');
+  $(".recoveredDiv").css('display', 'block');
+  $("#confirmedButton").removeClass('activeTab');
+  $("#deathsButton").removeClass('activeTab');
+  $("#recoveredButton").addClass('activeTab');
 }
 
 function initMap() {
@@ -176,14 +205,39 @@ function addMarkers(data) {
   });
 }
 
-function addCountryData(data) {
-  const table = document.getElementById("countryTableBody");
+function addConfirmedData(data) {
+  const table = document.getElementById("confirmedTableBody");
   if(table!=null){
     data.forEach(d => {
       let row = document.createElement('tr');
-      row.innerHTML = "<td><span class='countrywiseConfirmed'>" + d.confirmed + "</span></td><td><span class='countrywiseCountry'>" + d.country + "</span></td>";
+      row.innerHTML = "<td><span class='countValue colorConfirmed'>" + d.confirmed + "</span></td><td><span class='countLocation'>" + d.country + "</span></td>";
       row.onclick = changeCountry;
-      row.setAttribute("id", d.country.split(" ").join(""));
+      row.setAttribute("value", d.country);
+      table.appendChild(row);
+    });
+  }
+}
+
+function addDeathsData(data) {
+  const table = document.getElementById("deathsTableBody");
+  if (table != null) {
+    data.forEach(d => {
+      let row = document.createElement('tr');
+      row.innerHTML = "<td><span class='countValue colorDeaths'>" + d.confirmed + "</span></td><td><span class='countLocation'>" + d.country + "</span></td>";
+      row.onclick = changeCountry;
+      row.setAttribute("value", d.country);
+      table.appendChild(row);
+    });
+  }
+}
+
+function addRecoveredData(data) {
+  const table = document.getElementById("recoveredTableBody");
+  if (table != null) {
+    data.forEach(d => {
+      let row = document.createElement('tr');
+      row.innerHTML = "<td><span class='countValue colorRecovered'>" + d.confirmed + "</span></td><td><span class='countLocation'>" + d.country + "</span></td>";
+      row.onclick = changeCountry;
       row.setAttribute("value", d.country);
       table.appendChild(row);
     });
@@ -191,22 +245,18 @@ function addCountryData(data) {
 }
 
 function changeCountry() {
-  if($(this).is("tr")) {
-    const country = this.getAttribute("value");
-    const countryId = country.split(" ").join("");
-    if(currentCountry!==countryId){
-      $("#" + currentCountry).removeClass('activeCountry');
-      $("#" + countryId).addClass('activeCountry');
-      currentCountry = countryId;
-      // update here
+  if($(this).is('tr')) {
+    if(currentCountry !== this.getAttribute('value') && !countrySelected) {
+      const country = this.getAttribute('value');
+      currentCountry = country;
+      countrySelected = true;
       console.log("Request data for country: " + country);
     }
   } else {
-    if (currentCountry!=="worldData"){
-      $("#" + currentCountry).removeClass('activeCountry');
+    if (currentCountry !== "worldData") {
       currentCountry = "worldData";
-      // update here
-      console.log("Get world data, update graph and two tables");
+      countrySelected = false;
+      console.log("Request World data");
     }
   }
 }
