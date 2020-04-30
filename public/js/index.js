@@ -7,6 +7,7 @@ $(initData);
 function initData() {
   currentCountry = "worldData";
   countrySelected = false;
+  getMapData();
   getWorldData();
 }
 
@@ -40,6 +41,17 @@ function recoveredData() {
   $("#recoveredButton").addClass('activeTab');
 }
 
+// fetch map data
+function getMapData() {
+  $.get('/mapData', (data) => {
+    if(data.message==="success") {
+      addMarkers(data.geoLocation);
+    } else if(data.message==="error") {
+      alert(data.data);
+    }
+  })
+}
+
 // fetch gloabal data as default dashboard state
 function getWorldData() {
   $.get('/data', (data) => {
@@ -48,7 +60,6 @@ function getWorldData() {
       addConfirmedData(data.confirmed);
       addDeathsData(data.deaths);
       addRecoveredData(data.recovered);
-      addMarkers(data.geoLocation);
     } else if(data.message=="error") {
       alert(data.data);
     }
@@ -167,7 +178,7 @@ function addMarkers(data) {
       fillOpacity: 0.35,
       map: map,
       center: { lat: parseFloat(city._id.Latitude), lng: parseFloat(city._id.Longitude) },
-      radius: parseInt(city.confirmed)
+      radius: parseInt(city.confirmed)*2.5
     });
   });
 }

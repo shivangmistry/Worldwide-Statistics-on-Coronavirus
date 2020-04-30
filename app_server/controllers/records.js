@@ -7,6 +7,29 @@ exports.test = function (req, res)
     res.send("Test is working.");
 };
 
+exports.mapData_get = function(req, res) {
+    const lastDate = "04-17-2020";
+    Records.aggregate([
+        { $match: { Date: lastDate } },
+        {
+            $group: {
+                _id:
+                {
+                    "Country": "$Country",
+                    "Province": "$Province",
+                    "Latitude": "$Latitude",
+                    "Longitude": "$Longitude"
+                },
+                confirmed: { $sum: "$Confirmed" },
+                deaths: { $sum: "$Deaths" },
+                recovered: { $sum: "$Recovered" },
+            }
+        }
+    ], (err, result) => {
+        if (err) res.send({ "message": "error", "data": "Error loading global map data" })
+        res.send({"message":"success", "geoLocation":result});
+    });
+}
 
 exports.record_get = function (req, res) {
     const lastDate = "04-17-2020";
@@ -73,30 +96,9 @@ exports.record_get = function (req, res) {
                 ], (err3, result3) => {
                     if (err3) res.send({ "message": "error", "data": "Error loading global daily confirmed cases" });
                     returnObj.dailyCases = result3;
-                    Records.aggregate([
-                        { $match: { Date: lastDate, Country: "US" } },
-                        {
-                            $group: {
-                                _id:
-                                {
-                                    "Country": "$Country",
-                                    "Province": "$Province",
-                                    "Latitude": "$Latitude",
-                                    "Longitude": "$Longitude"
-                                },
-                                confirmed: { $sum: "$Confirmed" },
-                                deaths: { $sum: "$Deaths" },
-                                recovered: { $sum: "$Recovered" },
-
-                            }
-                        }
-                    ], (err4, result4) => {
-                        if (err4) res.send({ "message": "error", "data": "Error loading global map data" })
-                        returnObj.message = "success"
-                        returnObj.geoLocation = result4;
-                        res.send(returnObj);
-                    })
-                })
+                    returnObj.message = "success"
+                    res.send(returnObj);
+                });
             });
         });
     });
