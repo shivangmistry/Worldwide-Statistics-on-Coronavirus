@@ -18,16 +18,18 @@
                 <li class="menuButton"><a href="#"><i class="fa fa-align-justify"></i></a>
                     <div class="menuItems">
                         <ul>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Consult</a></li>
-                            <li><a href="#" class="notLoggedIn">Login</a></li>
-                            <li><a href="#" class="isLoggedIn">Add Case</a></li>
-                            <li><a href="#" class="isLoggedIn">Logout</a></li>
+                            <li><a href="index.html">Dashboard</a></li>
+                            <li><a href="news.html">News</a></li>
+                            <li><a href="consult.html">Consult</a></li>
+                            <li><a href="login.html" class="notLoggedIn">Login</a></li>
+                            <li><a href="insert.html" class="isLoggedIn">Update Case</a></li>
+                            <li><a href="index.html" class="isLoggedIn" onclick="handlelogout()">Logout</a></li>
                         </ul>
                     </div>
                 </li>
             </ul>
         </div>
+        <script src="js/main.js"></script>
     </header>
     <section>
         <div class="leftDiv">
@@ -40,7 +42,7 @@
             <!-- Confirmed Table -->
             <div class="tabContent confirmedDiv tableDiv">
                 Total Confirmed<br />
-                <span class="totalCountFigure colorConfirmed">1,003,328</span>
+                <span class="totalCountFigure colorConfirmed" id="totalConfirmed"></span>
                 <div>
                     <table id="confirmedTable" class="casesTable">
                         <thead>
@@ -59,7 +61,7 @@
             <!-- Deaths Table -->
             <div class="tabContent deathsDiv tableDiv">
                 Total Deaths<br />
-                <span class="totalCountFigure colorDeaths">190,861</span>
+                <span class="totalCountFigure colorDeaths" id="totalDeaths"></span>
                 <div>
                     <table id="deathsTable" class="casesTable">
                         <thead>
@@ -78,7 +80,7 @@
             <!-- Recovered Table -->
             <div class="tabContent recoveredDiv tableDiv">
                 Total Recovered<br />
-                <span class="totalCountFigure colorRecovered">738,490</span>
+                <span class="totalCountFigure colorRecovered" id="totalRecovered"></span>
                 <div>
                     <table id="recoveredTable" class="casesTable">
                         <thead>
@@ -115,7 +117,6 @@
             </div>
         </div>
     </section>
-    <script src="js/main.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

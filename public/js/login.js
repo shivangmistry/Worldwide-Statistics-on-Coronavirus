@@ -1,5 +1,7 @@
 $("#loginForm").submit(function (event) {
     event.preventDefault();
+    console.log($("#loginEmail").val());
+    console.log($("#loginPassword").val());
     $.post("/login",
         {
             username: $("#loginEmail").val(),

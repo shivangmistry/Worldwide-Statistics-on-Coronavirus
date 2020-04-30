@@ -5,44 +5,9 @@ var currentCountry, countrySelected;
 $(initData);
 
 function initData() {
-  
   currentCountry = "worldData";
   countrySelected = false;
-  
-  // $.get('/data', (data, status) => {
-  //   console.log(data)
-  //   console.log(status);
-  // });
-
-  const data = [
-    { "confirmed": "963, 168", "country": "US" },
-    { "confirmed": "226, 629", "country": "Spain" },
-    { "confirmed": "197, 675", "country": "Italy" },
-    { "confirmed": "161, 665", "country": "France" },
-    { "confirmed": "157, 495", "country": "Germany" },
-    { "confirmed": "154, 032", "country": "United Kingdom" },
-    { "confirmed": "154, 032", "country": "United Arab Emirates" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "110, 130", "country": "Turkey" },
-    { "confirmed": "90, 481", "country": "Iran" },
-    { "confirmed": "83, 909", "country": "China" },
-    { "confirmed": "80, 949", "country": "Russia" },
-    { "confirmed": "61, 888", "country": "Brazil" },
-    { "confirmed": "46, 866", "country": "Canada" },
-    { "confirmed": "46, 134", "country": "Belgium" },
-  ];
-  addConfirmedData(data);
-  addDeathsData(data);
-  addRecoveredData(data);
+  getWorldData();
 }
 
 // Table div switch
@@ -73,6 +38,35 @@ function recoveredData() {
   $("#confirmedButton").removeClass('activeTab');
   $("#deathsButton").removeClass('activeTab');
   $("#recoveredButton").addClass('activeTab');
+}
+
+// fetch gloabal data as default dashboard state
+function getWorldData() {
+  $.get('/data', (data) => {
+    if(data.message==="success") {
+      console.log(data);
+      addConfirmedData(data.confirmed);
+      addDeathsData(data.deaths);
+      addRecoveredData(data.recovered);
+      addMarkers(data.geoLocation);
+    } else if(data.message=="error") {
+      alert(data.data);
+    }
+  });
+}
+
+// fetch country data
+function getCountryData(country) {
+  $.get('/country/' + country, (data) => {
+    if(data.message==="success"){
+      console.log(data);
+      addConfirmedData(data.confirmed);
+      addDeathsData(data.deaths);
+      addRecoveredData(data.recovered);
+    } else if(data.message==="error") {
+      alert(data.data);
+    }
+  })
 }
 
 function initMap() {
@@ -160,36 +154,9 @@ function initMap() {
             }
           ]
     });
-
-    const data = [
-      {
-        "location":"Anhui",
-        "confirmed":"100",
-        "latitude": "30.6006773",
-        "longitude": "117.9249002"
-      },
-      {
-        "location": "Heibei",
-        "confirmed": "1000",
-        "latitude": "37.8956594",
-        "longitude": "114.9042208"
-      },
-      {
-        "location": "Hunan",
-        "confirmed": "10000",
-        "latitude": "27.6252995",
-        "longitude": "111.8568586"
-      },
-      {
-        "location": "Jiangxi",
-        "confirmed": "100000",
-        "latitude": "33.1401715",
-        "longitude": "119.7889248"
-      }
-    ];
-    addMarkers(data);
 }
 
+// map markers
 function addMarkers(data) {
   data.forEach(city => {
     var cityCircle = new google.maps.Circle({
@@ -199,51 +166,67 @@ function addMarkers(data) {
       fillColor: '#FF0000',
       fillOpacity: 0.35,
       map: map,
-      center: { lat: parseFloat(city.latitude), lng: parseFloat(city.longitude) },
+      center: { lat: parseFloat(city._id.Latitude), lng: parseFloat(city._id.Longitude) },
       radius: parseInt(city.confirmed)
     });
   });
 }
 
+// table confirmed cases
 function addConfirmedData(data) {
+  let count = 0
   const table = document.getElementById("confirmedTableBody");
+  $("#confirmedTableBody tr").remove();
   if(table!=null){
     data.forEach(d => {
       let row = document.createElement('tr');
-      row.innerHTML = "<td><span class='countValue colorConfirmed'>" + d.confirmed + "</span></td><td><span class='countLocation'>" + d.country + "</span></td>";
+      row.innerHTML = "<td><span class='countValue colorConfirmed'>" + d.confirmed + "</span></td><td><span class='countLocation'>" + d._id.Country + "</span></td>";
       row.onclick = changeCountry;
-      row.setAttribute("value", d.country);
+      row.setAttribute("value", d._id.Country);
       table.appendChild(row);
+      count += d.confirmed;
     });
   }
+  $('#totalConfirmed').html(count);
 }
 
+// table death cases
 function addDeathsData(data) {
+  let count = 0
   const table = document.getElementById("deathsTableBody");
+  $("#deathsTableBody tr").remove();
   if (table != null) {
     data.forEach(d => {
       let row = document.createElement('tr');
-      row.innerHTML = "<td><span class='countValue colorDeaths'>" + d.confirmed + "</span></td><td><span class='countLocation'>" + d.country + "</span></td>";
+      row.innerHTML = "<td><span class='countValue colorDeaths'>" + d.deaths + "</span></td><td><span class='countLocation'>" + d._id.Country + "</span></td>";
       row.onclick = changeCountry;
-      row.setAttribute("value", d.country);
+      row.setAttribute("value", d._id.Country);
       table.appendChild(row);
+      count += d.deaths;
     });
   }
+  $('#totalDeaths').html(count);
 }
 
+// table recovered cases
 function addRecoveredData(data) {
+  let count = 0
   const table = document.getElementById("recoveredTableBody");
+  $("#recoveredTableBody tr").remove();
   if (table != null) {
     data.forEach(d => {
       let row = document.createElement('tr');
-      row.innerHTML = "<td><span class='countValue colorRecovered'>" + d.confirmed + "</span></td><td><span class='countLocation'>" + d.country + "</span></td>";
+      row.innerHTML = "<td><span class='countValue colorRecovered'>" + d.recovered + "</span></td><td><span class='countLocation'>" + d._id.Country + "</span></td>";
       row.onclick = changeCountry;
-      row.setAttribute("value", d.country);
+      row.setAttribute("value", d._id.Country);
       table.appendChild(row);
+      count += d.recovered;
     });
   }
+  $('#totalRecovered').html(count);
 }
 
+// table row on click listener
 function changeCountry() {
   if($(this).is('tr')) {
     if(currentCountry !== this.getAttribute('value') && !countrySelected) {
@@ -251,12 +234,14 @@ function changeCountry() {
       currentCountry = country;
       countrySelected = true;
       console.log("Request data for country: " + country);
+      getCountryData(country);
     }
   } else {
     if (currentCountry !== "worldData") {
       currentCountry = "worldData";
       countrySelected = false;
       console.log("Request World data");
+      getWorldData();
     }
   }
 }

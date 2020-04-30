@@ -103,12 +103,12 @@ ul {
 /* dropdown - end */
 
 .loginForm {
-    margin: 0 auto;
+    margin: 100px auto;
     padding: 20px 20px 0 20px;
-    background-color: rgb(68, 68, 68);
     max-width: 300px;
     border-radius: 10px;
-    border: 1px solid rgb(134, 134, 134);
+    background-color: rgb(40, 40, 40);
+    border: 1px solid rgb(80, 80, 80);
 }
 
 .loginForm input {
