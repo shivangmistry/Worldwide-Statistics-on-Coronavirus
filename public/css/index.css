@@ -268,5 +268,18 @@ tbody.casesTableBody {
 
 .creditsDiv {
     height: 14.4vh;
+
 }
+.innerCreditsDiv{
+    font-size: x-small;
+    text-align: left;
+}
+
+#soucreText{
+    color: blue;
+
+}
+.marquee {
+    white-space: nowrap;
+  }
 /* right div end */
