@@ -230,6 +230,7 @@ tbody.casesTableBody {
 
 .countValue {
     padding-left: 10px;
+    font-weight: bolder;
 }
 
 .countLocation {

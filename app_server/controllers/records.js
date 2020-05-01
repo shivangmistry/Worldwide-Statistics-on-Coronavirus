@@ -2,33 +2,49 @@
 const Records= require('../models/case.js');
 
 
-exports.test = function (req, res)
-{
-    res.send("Test is working.");
+exports.test = function (req, res) {
+    res.send("test is running");
 };
 
 exports.mapData_get = function(req, res) {
     const lastDate = "04-17-2020";
+    // Records.aggregate([
+    //     { $match: { Date: lastDate } },
+    //     {
+    //         $group: {
+    //             _id:
+    //             {
+    //                 "Country": "$Country",
+    //                 "Province": "$Province",
+    //                 "Latitude": "$Latitude",
+    //                 "Longitude": "$Longitude"
+    //             },
+    //             confirmed: { $sum: "$Confirmed" },
+    //             deaths: { $sum: "$Deaths" },
+    //             recovered: { $sum: "$Recovered" },
+    //         }
+    //     }
+    // ], (err, result) => {
+    //     if (err) res.send({ "message": "error", "data": "Error loading global map data" })
+    //     res.send({"message":"success", "geoLocation":result});
+    // });
     Records.aggregate([
         { $match: { Date: lastDate } },
         {
             $group: {
                 _id:
-                {
-                    "Country": "$Country",
-                    "Province": "$Province",
-                    "Latitude": "$Latitude",
-                    "Longitude": "$Longitude"
-                },
-                confirmed: { $sum: "$Confirmed" },
-                deaths: { $sum: "$Deaths" },
-                recovered: { $sum: "$Recovered" },
+                    { Country: "$Country" },
+                confirmed: { $sum: "$Confirmed" }
             }
-        }
+        },
     ], (err, result) => {
-        if (err) res.send({ "message": "error", "data": "Error loading global map data" })
-        res.send({"message":"success", "geoLocation":result});
-    });
+        if(err) res.send({"message":"error", "data":"Error loading map data"});
+        let arr = [["Country", "Confirmed"]];
+        result.forEach((r) => {
+            arr.push([r._id.Country, r.confirmed])
+        })
+        res.send({"message":"success", "data": arr});
+    })
 }
 
 exports.record_get = function (req, res) {
