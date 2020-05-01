@@ -67,7 +67,7 @@ ul {
 
 .title {
     text-align: center;
-    font-size: larger;
+    font-size: 20px;
     font-weight: 500;
     letter-spacing: 1px;
 }
@@ -271,35 +271,49 @@ tbody.casesTableBody {
     height: 14.4vh;
 
 }
+
 .innerCreditsDiv{
     font-size: x-small;
     text-align: left;
+    padding: 2px 5px;
 }
 
-#soucreText{
-    color: blue;
-
+#soucreText {
+    color: rgb(98, 98, 230);
 }
-.marquee {
-    white-space: nowrap;
-  }
-  /* news jumbotron text align*/
-  .jumbotron  .newsHeader{
+/* right div end */
+
+/* news tab  start*/
+.pageTitle {
+    margin: 0;
+    padding: 5px;
+}
+
+.jumbotron  .newsHeader {
     text-align: left;
     font-size: medium;
 
-  }
-.jumbotron .newsPara{
+}
+
+.jumbotron .newsPara {
     text-align: left;
     font-size: small;
 
-  }
-.jumbotron{
-    background-color: rgb(30, 30, 30);
-    padding: 5px;
-    
 }
-.newsFooter{
+
+.jumbotron {
+    background-color: rgb(40, 40, 40);
+    padding: 5px;
+}
+
+.newsFooter {
     text-align: left;
 }
-/* right div end */
+
+.container {
+    background-color: rgb(30, 30, 30);
+    border: 1px solid rgb(80, 80, 80);
+    border-radius: 20px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+}
+/* news tab end */
