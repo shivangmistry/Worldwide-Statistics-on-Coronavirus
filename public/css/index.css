@@ -282,4 +282,23 @@ tbody.casesTableBody {
 .marquee {
     white-space: nowrap;
   }
+  /* news jumbotron text align*/
+  .jumbotron  .newsHeader{
+    text-align: left;
+    font-size: medium;
+
+  }
+.jumbotron .newsPara{
+    text-align: left;
+    font-size: small;
+
+  }
+.jumbotron{
+    background-color: rgb(30, 30, 30);
+    padding: 5px;
+    
+}
+.newsFooter{
+    text-align: left;
+}
 /* right div end */
