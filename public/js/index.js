@@ -9,6 +9,8 @@ function initData() {
   countrySelected = false;
   getMapData();
   getWorldData();
+  //initColumnConfirmedView();
+  
 }
 
 // Table div switch
@@ -19,6 +21,11 @@ function confirmedData() {
   $("#confirmedButton").addClass('activeTab');
   $("#deathsButton").removeClass('activeTab');
   $("#recoveredButton").removeClass('activeTab');
+}
+
+function confirmedDailyData() {
+  $(".confirmedDailyDiv").css('display', 'block');
+  $("#confirmedDailyButton").addClass('activeTab');
 }
 
 // Table div switch
@@ -41,6 +48,7 @@ function recoveredData() {
   $("#recoveredButton").addClass('activeTab');
 }
 
+
 // fetch map data
 function getMapData() {
   $.get('/mapData', (data) => {
@@ -54,14 +62,41 @@ function getMapData() {
   })
 }
 
+function addDailyConfirmedData(data) {
+ 
+  if(data!=null){
+    var result = data.map(function(item) {
+
+      return Object.values(item);
+    });
+  console.log(result)
+  temp =[];
+  
+  var res_res = result.map(function(item){
+      temp = Object.values(item[0])
+      temp.push(item[1])
+      return temp; 
+  });
+  res_res.splice(0, 0,['Date','Confirmed']);
+  console.log(res_res)
+    initColumnConfirmedView(res_res);
+  }
+  else{
+    alert(data.data);
+  }
+  
+}
+
+
 // fetch gloabal data as default dashboard state
 function getWorldData() {
   $.get('/data', (data) => {
     if(data.message==="success") {
-      // console.log(data);
+      console.log(data);
       addConfirmedData(data.confirmed);
       addDeathsData(data.deaths);
       addRecoveredData(data.recovered);
+      addDailyConfirmedData(data.dailyCases)
     } else if(data.message=="error") {
       alert(data.data);
     }
@@ -70,21 +105,24 @@ function getWorldData() {
 
 // fetch country data
 function getCountryData(country) {
+  console.log("Hello 2")
   $.get('/country/' + country, (data) => {
     if(data.message==="success"){
-      // console.log(data);
       addConfirmedData(data.confirmed);
       addDeathsData(data.deaths);
       addRecoveredData(data.recovered);
+      addDailyConfirmedData(data.dailyCases)
     } else if(data.message==="error") {
       alert(data.data);
     }
   })
 }
 
+
+
 // show map
 function initMapView(mapData) {
-  // console.log(mapData);
+  console.log(mapData);
   google.charts.load('current', {
     'packages': ['geochart'],
     'mapsApiKey': 'AIzaSyCnFY9KoVBajKdQ1CRzvwCmDJxS4YWUP1I'
@@ -101,6 +139,19 @@ function initMapView(mapData) {
     var chart = new google.visualization.GeoChart(document.getElementById('map'));
     chart.draw(data, options);
   }
+}
+
+function initColumnConfirmedView(graphData) {
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(drawStacked);
+
+  function drawStacked() {
+      var Graphdata = new google.visualization.arrayToDataTable(graphData);
+
+
+      var Graph = new google.visualization.ColumnChart(document.getElementById('DailyConfirmedDiv'));
+      Graph.draw(Graphdata);
+    }
 }
 
 // table confirmed cases
@@ -120,6 +171,8 @@ function addConfirmedData(data) {
   }
   $('#totalConfirmed').html(addCommas(count));
 }
+
+
 
 // table death cases
 function addDeathsData(data) {
@@ -159,6 +212,7 @@ function addRecoveredData(data) {
 
 // table row on click listener
 function changeCountry() {
+  console.log("Hello 1")
   if($(this).is('tr')) {
     if(currentCountry !== this.getAttribute('value') && !countrySelected) {
       const country = this.getAttribute('value');

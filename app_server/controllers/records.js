@@ -102,8 +102,8 @@ exports.record_get = function (req, res) {
                             _id:
                                 { "Date": "$Date" },
                             confirmed: { $sum: "$Confirmed" },
-                            deaths: { $sum: "$Deaths"},
-                            recovered: { $sum: "$Recovered"}
+                            //deaths: { $sum: "$Deaths"},
+                            //recovered: { $sum: "$Recovered"}
                         }
                     },
                     {
@@ -170,6 +170,7 @@ exports.record_country_get = function(req, res) {
             ], (err2, result2) => {
                 if (err2) res.send({ "message": "error", "data": "Error loading recovered cases for country: " + countryName })
                 returnObj.recovered = result2;
+                
                 Records.aggregate([
                     { $match: { Country: countryName } },
                     {
@@ -189,6 +190,7 @@ exports.record_country_get = function(req, res) {
                     returnObj.dailyCases = result3;
                     returnObj.message = "success";
                     res.send(returnObj);
+                    
                 });
             });
         });
