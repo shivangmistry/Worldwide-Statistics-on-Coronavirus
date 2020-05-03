@@ -70,16 +70,27 @@ function addDailyConfirmedData(data) {
       return Object.values(item);
     });
   console.log(result)
-  temp =[];
-  
-  var res_res = result.map(function(item){
-      temp = Object.values(item[0])
-      temp.push(item[1])
-      return temp; 
+  Confirmed_table =[];
+  //Fetch Confirmed Cases per country per date
+  var result_confirmed = result.map(function(item){
+      Confirmed_table = Object.values(item[0])
+      Confirmed_table.push(item[1])
+      return Confirmed_table; 
   });
-  res_res.splice(0, 0,['Date','Confirmed']);
-  console.log(res_res)
-    initColumnConfirmedView(res_res);
+  result_confirmed.splice(0, 0,['Date','Confirmed']);
+  console.log(result_confirmed)
+    initColumnConfirmedView(result_confirmed);
+
+  //Fetch Deaths Cases per country per date
+  Deaths_table =[];
+    var result_deaths = result.map(function(item){
+      Deaths_table = Object.values(item[0])
+      Deaths_table.push(item[1])
+      return Deaths_table; 
+  });
+  result_deaths.splice(0, 0,['Date','Deaths']);
+  console.log(result_deaths )
+    initColumnDeathsView(result_deaths);
   }
   else{
     alert(data.data);
@@ -142,6 +153,19 @@ function initMapView(mapData) {
 }
 
 function initColumnConfirmedView(graphData) {
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(drawStacked);
+
+  function drawStacked() {
+      var Graphdata = new google.visualization.arrayToDataTable(graphData);
+
+
+      var Graph = new google.visualization.ColumnChart(document.getElementById('DailyConfirmedDiv'));
+      Graph.draw(Graphdata);
+    }
+}
+
+function initColumnDeathsView(graphData) {
   google.charts.load('current', {packages: ['corechart', 'bar']});
   google.charts.setOnLoadCallback(drawStacked);
 
