@@ -136,11 +136,26 @@ function initageData(){
         var agedata = google.visualization.arrayToDataTable(ageData());
 
         var options = {
-          height: 265,
+          width: '100%',
+           height: '100%',
           pieHole: 0.4,
-          legend:'bottom',
           backgroundColor:"#333333",
-          colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+          colors: ['#f6c7b6','#f3b49f','#ec8f6e','#e6693e','#e0440e'],
+          chartArea: {
+            left: "3%",
+            top: "3%",
+            bottom:"10%",
+            height: "94%",
+            width: "94%"
+        },
+        legend: {
+          position:'bottom',
+          textStyle: {
+              color: '#ffffff'
+          }
+      },
+        
+
         
         };
 
@@ -236,7 +251,8 @@ function initBarGenderView(BarData){
         var Bardata = new google.visualization.arrayToDataTable(BarData);
 
         var options = {
-          height: 260,
+          height: '100%',
+          width:'100%',
           legend: {position: 'bottom'},
           backgroundColor:"#333333",
           colors: ['#f6c7b6', '#e0440e'],
@@ -257,7 +273,14 @@ function initBarGenderView(BarData){
         },
         titleTextStyle: {
             color: '#ffffff'
-        }
+        },
+        chartArea: {
+          left: "3%",
+          top: "3%",
+          bottom:"10%",
+          height: "94%",
+          width: "94%"
+      }
 
         };
 
