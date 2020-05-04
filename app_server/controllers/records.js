@@ -1,5 +1,6 @@
 
 const Records= require('../models/case.js');
+const GenderCases= require('../models/GenderCases.js');
 
 
 exports.test = function (req, res) {
@@ -102,8 +103,8 @@ exports.record_get = function (req, res) {
                             _id:
                                 { "Date": "$Date" },
                             confirmed: { $sum: "$Confirmed" },
-                            //deaths: { $sum: "$Deaths"},
-                            //recovered: { $sum: "$Recovered"}
+                            deaths: { $sum: "$Deaths"},
+                            recovered: { $sum: "$Recovered"}
                         }
                     },
                     {
@@ -112,8 +113,21 @@ exports.record_get = function (req, res) {
                 ], (err3, result3) => {
                     if (err3) res.send({ "message": "error", "data": "Error loading global daily confirmed cases" });
                     returnObj.dailyCases = result3;
-                    returnObj.message = "success"
-                    res.send(returnObj);
+                GenderCases.aggregate([
+                        {$group: {
+                            _id:
+                            {},
+                            Male_Confirmed_Number: { $sum: "$Male_Confirmed_Number" },
+                            Female_Confirmed_number: { $sum: "$Female_Confirmed_number"},
+                            Male_Deaths_Number: { $sum: "$Male_Deaths_Number"},
+                            Female_Deaths_Number: { $sum: "$Female_Deaths_Number"}
+                    }},
+                        ], (err4, result4) => {
+                            if (err4) res.send({ "message": "error", "data": "Error loading global gender confirmed and death cases" });
+                            returnObj.WorldGenderCases = result4;  
+                            returnObj.message = "success"
+                            res.send(returnObj);
+                        });
                 });
             });
         });
@@ -188,9 +202,24 @@ exports.record_country_get = function(req, res) {
                 ], (err3, result3) => {
                     if (err3) res.send({ "message": "error", "data": "Error loading daily cases for country: " + countryName })
                     returnObj.dailyCases = result3;
+
+                GenderCases.aggregate([
+                    { $match: { Country: countryName } },
+                        {$group: {
+                        _id:
+                        {},
+                        Male_Confirmed_Number: { $sum: "$Male_Confirmed_Number" },
+                        Female_Confirmed_number: { $sum: "$Female_Confirmed_number"},
+                        Male_Deaths_Number: { $sum: "$Male_Deaths_Number"},
+                        Female_Deaths_Number: { $sum: "$Female_Deaths_Number"}
+                        }},
+                    ], (err5, result5) => {
+                    if (err5) res.send({ "message": "error", "data": "Error loading daily Gender cases for country: " + countryName })
+                    returnObj.CountryGenderCases = result5;
+                    console.log(result5);
                     returnObj.message = "success";
                     res.send(returnObj);
-                    
+                    });
                 });
             });
         });

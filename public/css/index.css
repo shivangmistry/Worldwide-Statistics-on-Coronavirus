@@ -261,6 +261,7 @@ tbody.casesTableBody {
 
 .genderDiv {
     height: 38vh;
+    width: 100%;
 }
 
 .ageDiv {
@@ -316,4 +317,44 @@ tbody.casesTableBody {
     border-radius: 20px;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
 }
+.tabDailyButtonsDiv {
+    height: 30vh;
+    /* background-color: rgb(30, 30, 30); */
+}
+/* Style the tab for Graphs of Daily Confirmed and Daily Dead */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #080808;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabDailyContent {
+    width: 100%;
+    margin-left: 8px;
+    margin-top: 0vh;
+
+  }
 /* news tab end */

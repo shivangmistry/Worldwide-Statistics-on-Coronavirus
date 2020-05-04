@@ -1,6 +1,7 @@
 var map;
 var currentCountry, countrySelected;
 
+
 // call when document is ready 
 $(initData);
 
@@ -25,7 +26,16 @@ function confirmedData() {
 
 function confirmedDailyData() {
   $(".confirmedDailyDiv").css('display', 'block');
+  $(".DailydeathsDiv").css('display', 'none');
   $("#confirmedDailyButton").addClass('activeTab');
+  $("#DailydeathsButton").removeClass('activeTab');
+}
+
+function deathDailyData() {
+  $(".confirmedDailyDiv").css('display', 'none');
+  $(".DailydeathsDiv").css('display', 'block');
+  $("#confirmedDailyButton").removeClass('activeTab');
+  $("#DailydeathsButton").addClass('activeTab');
 }
 
 // Table div switch
@@ -59,7 +69,7 @@ function getMapData() {
     } else if(data.message==="error") {
       alert(data.data);
     }
-  })
+  });
 }
 
 function addDailyConfirmedData(data) {
@@ -85,7 +95,7 @@ function addDailyConfirmedData(data) {
   Deaths_table =[];
     var result_deaths = result.map(function(item){
       Deaths_table = Object.values(item[0])
-      Deaths_table.push(item[1])
+      Deaths_table.push(item[2])
       return Deaths_table; 
   });
   result_deaths.splice(0, 0,['Date','Deaths']);
@@ -107,7 +117,8 @@ function getWorldData() {
       addConfirmedData(data.confirmed);
       addDeathsData(data.deaths);
       addRecoveredData(data.recovered);
-      addDailyConfirmedData(data.dailyCases)
+      addDailyConfirmedData(data.dailyCases);
+      addWorldGenderCases(data.WorldGenderCases);
     } else if(data.message=="error") {
       alert(data.data);
     }
@@ -123,6 +134,7 @@ function getCountryData(country) {
       addDeathsData(data.deaths);
       addRecoveredData(data.recovered);
       addDailyConfirmedData(data.dailyCases)
+      addWorldGenderCases(data.CountryGenderCases);
     } else if(data.message==="error") {
       alert(data.data);
     }
@@ -160,7 +172,7 @@ function initColumnConfirmedView(graphData) {
       var Graphdata = new google.visualization.arrayToDataTable(graphData);
 
 
-      var Graph = new google.visualization.ColumnChart(document.getElementById('DailyConfirmedDiv'));
+      var Graph = new google.visualization.ColumnChart(document.getElementById('DailyConfirmedCases'));
       Graph.draw(Graphdata);
     }
 }
@@ -173,9 +185,29 @@ function initColumnDeathsView(graphData) {
       var Graphdata = new google.visualization.arrayToDataTable(graphData);
 
 
-      var Graph = new google.visualization.ColumnChart(document.getElementById('DailyConfirmedDiv'));
+      var Graph = new google.visualization.ColumnChart(document.getElementById('DailyDeathCases'));
       Graph.draw(Graphdata);
     }
+}
+
+//Bar chart for Gender Based statistics
+function initBarGenderView(BarData){
+  google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var Bardata = new google.visualization.arrayToDataTable(BarData);
+
+        var options = {
+          bars: 'horizontal', // Required for Material Bar Charts.
+          legend: {position: 'none'}
+
+        };
+
+        var Barchart = new google.charts.Bar(document.getElementById('Gender_Charts'));
+
+        Barchart.draw(Bardata, google.charts.Bar.convertOptions(options));
+  }
 }
 
 // table confirmed cases
@@ -232,6 +264,27 @@ function addRecoveredData(data) {
     });
   }
   $('#totalRecovered').html(addCommas(count));
+}
+//Worldwide Gender Cases
+function addWorldGenderCases(data){
+  var result = data.map(function(item) {
+
+    return Object.values(item);
+  });
+  temp =[];
+  res_res = [];
+// //Fetch WorldWide Gender based cases
+    t = result[0]
+    temp = ["Male"]
+    temp.push(t[1])
+    temp.push(t[3])
+    res_res.push(temp)
+    temp = ["Female"]
+    temp.push(t[2])
+    temp.push(t[4])
+    res_res.push(temp)
+    res_res.splice(0, 0,['Gender','ConfirmedCases','Deaths']);
+    initBarGenderView(res_res);
 }
 
 // table row on click listener
