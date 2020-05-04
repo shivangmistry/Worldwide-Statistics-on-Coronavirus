@@ -104,35 +104,25 @@
             </div>
 
             <!-- ********************** -->
-            <div class="div graphDiv">
-           <div class="tabDailyButtonsDiv">
-                <i class="fa fa-globe" onclick="changeCountry()"></i>
-                <button class="tabButton activeTab" id="confirmedDailyButton" onclick="confirmedDailyData()">Confirmed Cases</button>
-                <button class="tabButton" id="DailydeathsButton" onclick="deathDailyData()">Deaths</button>
+            <div class="graphDiv">
+                <div class="div tabDailyButtonsDiv">
+                    <i class="fa fa-globe" onclick="changeCountry()"></i>
+                    <button class="tabButton activeTab" id="confirmedDailyButton" onclick="confirmedDailyData()">Confirmed Cases</button>
+                    <button class="tabButton" id="DailydeathsButton" onclick="deathDailyData()">Deaths</button>
+                </div>
+                <div class="tabDailyContent confirmedDailyDiv" id = "DailyConfirmedCases"></div>
+                <!-- <div class="tabDailyContent DailydeathsDiv" id = "DailyDeathCases"></div>  -->
             </div>
-            </div>
-            <div class="tabDailyContent confirmedDailyDiv" id = "DailyConfirmedCases"></div>
-            <div class="tabDailyContent DailydeathsDiv" id = "DailyDeathCases"></div> 
-
-
-
-            
-            <!-- <div class="confirmedDailyDiv" id = "DailyConfirmedCases">
-            </div>
-            <div class="DailydeathsDiv" id = "DailyDeathCases">
-            </div> -->
-            <!-- ********************** -->
         </div>
     </div>
         <div class="rightDiv">
-            <div class="div genderDiv" id="Gender_Charts">
-                Gender Based Covid Stats
+            <div class="div genderDiv" >
+                Gender Based Stats
+                <div id="Gender_Charts"></div>
             </div>
             <div class="div ageDiv" id = "agegraph">
-                Age wise graph
-                <div class= "ageInsideDiv">
-                
-                </div>
+                Confirmed Cases Grouped by Age
+                <div id= "ageInsideDiv"></div>
             </div>
             <div class="div creditsDiv">
                 <div class="innerCreditsDiv">

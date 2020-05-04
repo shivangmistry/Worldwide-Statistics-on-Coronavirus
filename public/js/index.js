@@ -1,5 +1,7 @@
 var map;
 var currentCountry, countrySelected;
+var dailyConfirmed = [];
+var dailyDeaths = [];
 
 
 // call when document is ready 
@@ -11,8 +13,6 @@ function initData() {
   getMapData();
   getWorldData();
   initageData();
-  //initColumnConfirmedView();
-  
 }
 
 // Table div switch
@@ -23,20 +23,6 @@ function confirmedData() {
   $("#confirmedButton").addClass('activeTab');
   $("#deathsButton").removeClass('activeTab');
   $("#recoveredButton").removeClass('activeTab');
-}
-
-function confirmedDailyData() {
-  $(".confirmedDailyDiv").css('display', 'block');
-  $(".DailydeathsDiv").css('display', 'none');
-  $("#confirmedDailyButton").addClass('activeTab');
-  $("#DailydeathsButton").removeClass('activeTab');
-}
-
-function deathDailyData() {
-  $(".confirmedDailyDiv").css('display', 'none');
-  $(".DailydeathsDiv").css('display', 'block');
-  $("#confirmedDailyButton").removeClass('activeTab');
-  $("#DailydeathsButton").addClass('activeTab');
 }
 
 // Table div switch
@@ -59,6 +45,23 @@ function recoveredData() {
   $("#recoveredButton").addClass('activeTab');
 }
 
+// daily graph switch
+function confirmedDailyData() {
+  // $(".confirmedDailyDiv").css('display', 'block');
+  // $(".DailydeathsDiv").css('display', 'none');
+  initColumnConfirmedView(dailyConfirmed);
+  $("#confirmedDailyButton").addClass('activeTab');
+  $("#DailydeathsButton").removeClass('activeTab');
+}
+
+// daily graph switch
+function deathDailyData() {
+  // $(".confirmedDailyDiv").css('display', 'none');
+  // $(".DailydeathsDiv").css('display', 'block');
+  initColumnConfirmedView(dailyDeaths);
+  $("#confirmedDailyButton").removeClass('activeTab');
+  $("#DailydeathsButton").addClass('activeTab');
+}
 
 // fetch map data
 function getMapData() {
@@ -90,7 +93,8 @@ function addDailyConfirmedData(data) {
   });
   result_confirmed.splice(0, 0,['Date','Confirmed']);
   console.log(result_confirmed)
-    initColumnConfirmedView(result_confirmed);
+  dailyConfirmed = result_confirmed;
+    // initColumnConfirmedView(result_confirmed);
 
   //Fetch Deaths Cases per country per date
   Deaths_table =[];
@@ -101,7 +105,11 @@ function addDailyConfirmedData(data) {
   });
   result_deaths.splice(0, 0,['Date','Deaths']);
   console.log(result_deaths )
-    initColumnDeathsView(result_deaths);
+  dailyDeaths = result_deaths;
+    // initColumnDeathsView(result_deaths);
+    if ($("#confirmedDailyButton").hasClass("activeTab")) initColumnConfirmedView(dailyConfirmed);
+    else initColumnConfirmedView(dailyDeaths);
+  
   }
   else{
     alert(data.data);
@@ -128,6 +136,7 @@ function initageData(){
         var agedata = google.visualization.arrayToDataTable(ageData());
 
         var options = {
+          height: 265,
           pieHole: 0.4,
           legend:'bottom',
           backgroundColor:"#333333",
@@ -135,7 +144,7 @@ function initageData(){
         
         };
 
-        var donutchart = new google.visualization.PieChart(document.getElementById('agegraph'));
+        var donutchart = new google.visualization.PieChart(document.getElementById('ageInsideDiv'));
         donutchart.draw(agedata, options);
 }
 }
@@ -158,7 +167,6 @@ function getWorldData() {
 
 // fetch country data
 function getCountryData(country) {
-  console.log("Hello 2")
   $.get('/country/' + country, (data) => {
     if(data.message==="success"){
       addConfirmedData(data.confirmed);
@@ -171,8 +179,6 @@ function getCountryData(country) {
     }
   })
 }
-
-
 
 // show map
 function initMapView(mapData) {
@@ -208,18 +214,18 @@ function initColumnConfirmedView(graphData) {
     }
 }
 
-function initColumnDeathsView(graphData) {
-  google.charts.load('current', {packages: ['corechart', 'bar']});
-  google.charts.setOnLoadCallback(drawStacked);
+// function initColumnDeathsView(graphData) {
+//   google.charts.load('current', {packages: ['corechart', 'bar']});
+//   google.charts.setOnLoadCallback(drawStacked);
 
-  function drawStacked() {
-      var Graphdata = new google.visualization.arrayToDataTable(graphData);
+//   function drawStacked() {
+//       var Graphdata = new google.visualization.arrayToDataTable(graphData);
 
 
-      var Graph = new google.visualization.ColumnChart(document.getElementById('DailyDeathCases'));
-      Graph.draw(Graphdata);
-    }
-}
+//       var Graph = new google.visualization.ColumnChart(document.getElementById('DailyDeathCases'));
+//       Graph.draw(Graphdata);
+//     }
+// }
 
 //Bar chart for Gender Based statistics
 function initBarGenderView(BarData){
@@ -230,6 +236,7 @@ function initBarGenderView(BarData){
         var Bardata = new google.visualization.arrayToDataTable(BarData);
 
         var options = {
+          height: 260,
           legend: {position: 'bottom'},
           backgroundColor:"#333333",
           colors: ['#f6c7b6', '#e0440e'],
