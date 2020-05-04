@@ -10,6 +10,7 @@ function initData() {
   countrySelected = false;
   getMapData();
   getWorldData();
+  initageData();
   //initColumnConfirmedView();
   
 }
@@ -109,6 +110,36 @@ function addDailyConfirmedData(data) {
 }
 
 
+
+function ageData() {
+  return [
+      ["Age", "Percentage"],
+      ["0-17", 0.04],
+      ["18-44", 4.50],
+      ["45-64", 23.10],
+      ["65-74", 24.60],
+      ["75+", 47.70],
+  ]
+}
+function initageData(){
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var agedata = google.visualization.arrayToDataTable(ageData());
+
+        var options = {
+          pieHole: 0.4,
+          legend:'bottom',
+          backgroundColor:"#333333",
+          colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+        
+        };
+
+        var donutchart = new google.visualization.PieChart(document.getElementById('agegraph'));
+        donutchart.draw(agedata, options);
+}
+}
+
 // fetch gloabal data as default dashboard state
 function getWorldData() {
   $.get('/data', (data) => {
@@ -192,21 +223,39 @@ function initColumnDeathsView(graphData) {
 
 //Bar chart for Gender Based statistics
 function initBarGenderView(BarData){
-  google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
         var Bardata = new google.visualization.arrayToDataTable(BarData);
 
         var options = {
-          bars: 'horizontal', // Required for Material Bar Charts.
-          legend: {position: 'none'}
+          legend: {position: 'bottom'},
+          backgroundColor:"#333333",
+          hAxis: {
+            textStyle: {
+                color: '#ffffff'
+            }
+        },
+        vAxis: {
+            textStyle: {
+                color: '#ffffff'
+            }
+        },
+        legend: {
+            textStyle: {
+                color: '#ffffff'
+            }
+        },
+        titleTextStyle: {
+            color: '#ffffff'
+        }
 
         };
 
-        var Barchart = new google.charts.Bar(document.getElementById('Gender_Charts'));
+        var Barchart = new google.visualization.ColumnChart(document.getElementById('Gender_Charts'));
 
-        Barchart.draw(Bardata, google.charts.Bar.convertOptions(options));
+        Barchart.draw(Bardata, options);
   }
 }
 
