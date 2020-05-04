@@ -139,7 +139,7 @@ function initageData(){
           width: '100%',
            height: 260,
           pieHole: 0.4,
-          backgroundColor:"#333333",
+          backgroundColor:"#FFF",
           colors: ['#f6c7b6','#f3b49f','#ec8f6e','#e6693e','#e0440e'],
           chartArea: {
             left: "3%",
@@ -151,7 +151,7 @@ function initageData(){
         legend: {
           position:'bottom',
           textStyle: {
-              color: '#ffffff'
+              color: '#000'
           }
       },
         
@@ -223,9 +223,14 @@ function initColumnConfirmedView(graphData) {
   function drawStacked() {
       var Graphdata = new google.visualization.arrayToDataTable(graphData);
 
+    var options = {
+      title: "Daily Cases Registered",
+      legend: { position: "none" },
+      hAxis: { showTextEvery: 15}
+    };
 
-      var Graph = new google.visualization.ColumnChart(document.getElementById('DailyConfirmedCases'));
-      Graph.draw(Graphdata);
+      var Graph = new google.visualization.LineChart(document.getElementById('DailyConfirmedCases'));
+      Graph.draw(Graphdata, options);
     }
 }
 
@@ -254,29 +259,28 @@ function initBarGenderView(BarData){
           height: 260,
           width:'100%',
           legend: {position: 'bottom'},
-          backgroundColor:"#333333",
+          backgroundColor:"#FFF",
           colors: ['#f6c7b6', '#e0440e'],
           hAxis: {
             textStyle: {
-                color: '#ffffff'
+                color: '#000'
             }
         },
         vAxis: {
             textStyle: {
-                color: '#ffffff'
+                color: '#000'
             }
         },
         legend: {
-            textStyle: {
-                color: '#ffffff'
-            }
+            position: 'top'
         },
         titleTextStyle: {
-            color: '#ffffff'
+            color: '#000'
         },
         chartArea: {
-          left: "3%",
-          top: "3%",
+          left: "17%",
+          top: "10%",
+          right: "10%",
           bottom:"10%",
           height: "94%",
           width: "94%"
