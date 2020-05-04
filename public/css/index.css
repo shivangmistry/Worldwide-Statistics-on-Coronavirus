@@ -173,7 +173,7 @@ ul {
 
 .tableDiv {
     padding-top: 15px;
-    width: 19.5%;
+    width: 19.39vw;
 }
 
 .deathsDiv {
@@ -321,9 +321,10 @@ tbody.casesTableBody {
     border-radius: 20px;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
 }
+/* news tab end */
+
 .tabDailyButtonsDiv {
     height: 30vh;
-    /* background-color: rgb(30, 30, 30); */
 }
 /* Style the tab for Graphs of Daily Confirmed and Daily Dead */
 .tab {
@@ -356,9 +357,7 @@ tbody.casesTableBody {
   
   /* Style the tab content */
   .tabDailyContent {
-    width: 100%;
-    margin-left: 8px;
-    margin-top: 0vh;
-
-  }
-/* news tab end */
+    position: absolute;
+    bottom: 9px;
+    width: 56.82%;
+}
