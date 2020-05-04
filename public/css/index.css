@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    /* background-color: black; */
     margin: 0 8px;
     padding: 0;
     text-align: center;
@@ -41,7 +41,7 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2); 
     border-radius: 10px;
 }
 
@@ -58,11 +58,11 @@ ul {
 .div {
     margin-top: 8px;
     color: rgb(219, 219, 219);
-    background-color: rgb(40, 40, 40);
-    border: 1px solid rgb(80, 80, 80);
+    background-color: #05386B;
+    border: 1px solid #05386B;
     border-radius: 3px;
     overflow: hidden;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.5);
 }
 
 .title {
@@ -84,17 +84,17 @@ ul {
     width: max-content;
     text-align: left;
     position: absolute;
-    background-color: rgb(68, 68, 68);
     top: 25px;
     z-index: 1;
     border: 1px solid rgb(134, 134, 134);
     border-radius: 3px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.5);
+    background-color: black;
 }
 
 .menuItems li:hover {
-    background-color: rgb(134, 134, 134);
-    color: white;
+    /* background-color: rgb(134, 134, 134); */
+    background-color: #0b58a3;
 }
 
 .menuItems a {
@@ -128,7 +128,6 @@ ul {
 
 .tabButtonsDiv {
     height: 92.5vh;
-    background-color: rgb(30, 30, 30);
 }
 
 .fa-globe {
@@ -146,12 +145,13 @@ ul {
     outline: none;
     cursor: pointer;
     transition: 0.3s;
-    background-color: rgb(40, 40, 40);
-    color: rgb(190, 190, 190);
+    background-color: #05386B;;
+    color: rgb(220, 220, 220);
 }
 
 .tabButton:hover {
-    background-color: rgb(80, 80, 80);
+    color: rgb(220, 220, 220);
+    background-color: #0b58a3;
     cursor: pointer;
 }
 
@@ -160,20 +160,23 @@ ul {
 }
 
 .activeTab {
-    background-color: rgb(30, 30, 30);
+    background-color: white;
     outline: none;
-    border-top: 1px solid white;
+    color: rgb(35, 35, 35);
+    border-top: 1px solid #05386B;
 }
 
 .tabContent {
     position: absolute;
     top: 69.5px;
-    left: 9px
+    left: 8.5px;
+    color: rgb(35, 35, 35);
 }
 
 .tableDiv {
     padding-top: 15px;
     width: 19.39vw;
+    background-color: white;
 }
 
 .deathsDiv {
@@ -195,7 +198,8 @@ tbody.casesTableBody {
     overflow: auto;
     height: 67.2vh;
     width: 100%;
-    background-color: rgb(40, 40, 40);
+    background-color: white;
+    color: rgb(30, 30, 30);
 }
 .casesTable thead, tbody.casesTableBody tr {
     display: block;
@@ -204,8 +208,9 @@ tbody.casesTableBody {
 
 .casesTable th {
     border-top: 1px solid rgb(80, 80, 80);
-    background-color: rgb(30, 30, 30);
+    background-color: #05386B;
     padding: 10px 0;
+    color: rgb(220, 220, 220);
 }
 
 .casesTable tr:hover {
@@ -221,7 +226,7 @@ tbody.casesTableBody {
 }
 
 .colorDeaths {
-    color: white;
+    color: rgb(30, 30, 30);
 }
 
 .colorRecovered {
@@ -274,17 +279,18 @@ tbody.casesTableBody {
 
 .creditsDiv {
     height: 14.4vh;
-
+    background-color: white;
+    color: black;
 }
 
 .innerCreditsDiv{
-    font-size: x-small;
+    font-size: small;
     text-align: left;
     padding: 2px 5px;
 }
 
 #soucreText {
-    color: rgb(98, 98, 230);
+    color: #05386B;
 }
 /* right div end */
 
@@ -292,22 +298,23 @@ tbody.casesTableBody {
 .pageTitle {
     margin: 0;
     padding: 5px;
+    color: rgb(30, 30, 30);
 }
 
 .jumbotron  .newsHeader {
     text-align: left;
-    font-size: medium;
+    font-size: 20px;
 
 }
 
 .jumbotron .newsPara {
     text-align: left;
-    font-size: small;
+    font-size: 16px;
 
 }
 
 .jumbotron {
-    background-color: rgb(40, 40, 40);
+    background-color: white;
     padding: 5px;
 }
 
@@ -316,10 +323,12 @@ tbody.casesTableBody {
 }
 
 .container {
-    background-color: rgb(30, 30, 30);
+    /* background-color: rgb(30, 30, 30); */
+    background-color: white;
     border: 1px solid rgb(80, 80, 80);
     border-radius: 20px;
-    box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+    color: rgb(30, 30, 30);
+    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.5);
 }
 /* news tab end */
 
