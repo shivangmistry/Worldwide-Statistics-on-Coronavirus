@@ -137,15 +137,15 @@ function initageData(){
 
         var options = {
           width: '100%',
-           height: '100%',
+           height: 260,
           pieHole: 0.4,
           backgroundColor:"#333333",
           colors: ['#f6c7b6','#f3b49f','#ec8f6e','#e6693e','#e0440e'],
           chartArea: {
             left: "3%",
-            top: "3%",
+            top: "5%",
             bottom:"10%",
-            height: "94%",
+            height: "100%",
             width: "94%"
         },
         legend: {
@@ -251,7 +251,7 @@ function initBarGenderView(BarData){
         var Bardata = new google.visualization.arrayToDataTable(BarData);
 
         var options = {
-          height: '100%',
+          height: 260,
           width:'100%',
           legend: {position: 'bottom'},
           backgroundColor:"#333333",
