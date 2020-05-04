@@ -232,6 +232,7 @@ function initBarGenderView(BarData){
         var options = {
           legend: {position: 'bottom'},
           backgroundColor:"#333333",
+          colors: ['#f6c7b6', '#e0440e'],
           hAxis: {
             textStyle: {
                 color: '#ffffff'
