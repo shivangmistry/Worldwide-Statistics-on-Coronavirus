@@ -42,7 +42,7 @@
             </div>
             <!-- Confirmed Table -->
             <div class="tabContent confirmedDiv tableDiv">
-                Total Confirmed<br />
+                <span class="currentCountry"></span><br />
                 <span class="totalCountFigure colorConfirmed" id="totalConfirmed"></span>
                 <div>
                     <table id="confirmedTable" class="casesTable">
@@ -61,7 +61,7 @@
             </div>
             <!-- Deaths Table -->
             <div class="tabContent deathsDiv tableDiv">
-                Total Deaths<br />
+                <span class="currentCountry"></span><br />
                 <span class="totalCountFigure colorDeaths" id="totalDeaths"></span>
                 <div>
                     <table id="deathsTable" class="casesTable">
@@ -80,7 +80,7 @@
             </div>
             <!-- Recovered Table -->
             <div class="tabContent recoveredDiv tableDiv">
-                Total Recovered<br />
+                <span class="currentCountry"></span><br />
                 <span class="totalCountFigure colorRecovered" id="totalRecovered"></span>
                 <div>
                     <table id="recoveredTable" class="casesTable">
@@ -117,11 +117,11 @@
     </div>
         <div class="rightDiv">
             <div class="div genderDiv" >
-                Gender Based Stats
+                Gender Stats: <span class="currentCountry"></span>
                 <div id="Gender_Charts"></div>
             </div>
             <div class="div ageDiv" id = "agegraph">
-                Confirmed Cases Grouped by Age
+                Confirmed Cases by Age Group
                 <div id= "ageInsideDiv"></div>
             </div>
             <div class="div creditsDiv">

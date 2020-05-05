@@ -8,8 +8,9 @@ var dailyDeaths = [];
 $(initData);
 
 function initData() {
-  currentCountry = "worldData";
+  currentCountry = "Worldwide";
   countrySelected = false;
+  $('.currentCountry').html(currentCountry);
   getMapData();
   getWorldData();
   initageData();
@@ -224,7 +225,7 @@ function initColumnConfirmedView(graphData) {
       var Graphdata = new google.visualization.arrayToDataTable(graphData);
 
     var options = {
-      title: "Daily Cases Registered",
+      title: "Daily Cases Registered: " + currentCountry,
       legend: { position: "none" },
       hAxis: { showTextEvery: 15},
       trendlines: {
@@ -383,16 +384,27 @@ function changeCountry() {
       currentCountry = country;
       countrySelected = true;
       console.log("Request data for country: " + country);
+      $('.currentCountry').html(currentCountry);
+      changeCountryAnimation();
       getCountryData(country);
     }
   } else {
-    if (currentCountry !== "worldData") {
-      currentCountry = "worldData";
+    if (currentCountry !== "Worldwide") {
+      currentCountry = "Worldwide";
       countrySelected = false;
       console.log("Request World data");
+      $('.currentCountry').html(currentCountry);
+      changeCountryAnimation();
       getWorldData();
     }
   }
+}
+
+function changeCountryAnimation() {
+  $('.fa-globe, .tabButton, .genderDiv').addClass('transform-active');
+  setTimeout(function () {
+    $('.fa-globe, .tabButton, .genderDiv').removeClass('transform-active');
+  }, 2000);
 }
 
 function addCommas(x) {

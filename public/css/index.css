@@ -135,6 +135,8 @@ ul {
     width: 10%;
     float: left;
     cursor: pointer;
+    /* background-color: red; */
+    background-color: #05386B;
 }
 
 .tabButton {
@@ -145,7 +147,8 @@ ul {
     outline: none;
     cursor: pointer;
     transition: 0.3s;
-    background-color: #05386B;;
+    /* background-color: red; */
+    background-color: #05386B;
     color: rgb(220, 220, 220);
 }
 
@@ -267,6 +270,7 @@ tbody.casesTableBody {
 .genderDiv {
     height: 38vh;
     width: 100%;
+    /* background-color: red; */
 }
 
 .ageDiv {
@@ -412,3 +416,16 @@ tbody.casesTableBody {
     justify-content: center;
   }
   
+/* change country animation */
+.transform-active {
+  animation: pulse 2s 1;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #ff142c;
+  }
+  100% {
+    background-color: #05386B;
+  }
+}
