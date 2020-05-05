@@ -172,7 +172,7 @@ function getWorldData() {
       addConfirmedData(data.confirmed);
       addDeathsData(data.deaths);
       addRecoveredData(data.recovered);
-      addDailyConfirmedData(data.dailyCases);
+      addDailyConfirmedData(data.WorlddailyCases);
       addWorldGenderCases(data.WorldGenderCases);
     } else if(data.message=="error") {
       alert(data.data);
@@ -226,7 +226,10 @@ function initColumnConfirmedView(graphData) {
     var options = {
       title: "Daily Cases Registered",
       legend: { position: "none" },
-      hAxis: { showTextEvery: 15}
+      hAxis: { showTextEvery: 15},
+      trendlines: {
+          color: 'green',
+      }
     };
 
       var Graph = new google.visualization.LineChart(document.getElementById('DailyConfirmedCases'));

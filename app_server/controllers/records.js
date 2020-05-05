@@ -112,7 +112,7 @@ exports.record_get = function (req, res) {
                     }
                 ], (err3, result3) => {
                     if (err3) res.send({ "message": "error", "data": "Error loading global daily confirmed cases" });
-                    returnObj.dailyCases = result3;
+                    returnObj.WorlddailyCases = result3;
                 GenderCases.aggregate([
                         {$group: {
                             _id:
