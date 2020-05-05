@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSC Consult</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <header class="div">
+        <div class="title">WORLDWIDE&nbsp;&nbsp;STATISTICS&nbsp;&nbsp;ON&nbsp;&nbsp;CORONAVIRUS</div>
+        <div class="sessionMenu">
+            <ul>
+                <li class="menuButton"><a href="#"><i class="fa fa-align-justify"></i></a>
+                    <div class="menuItems">
+                        <ul>
+                            <li><a href="../index.html">Dashboard</a></li>
+                            <li><a href="../news.html">News</a></li>
+                            <li><a href="../consult.html">Consult</a></li>
+                            <li><a href="../login.html" class="notLoggedIn">Login</a></li>
+                            <li><a href="../insert.html" class="isLoggedIn">Update Case</a></li>
+                            <li><a href="../index.html" class="isLoggedIn" onclick="handlelogout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <script src="js/main.js"></script>
+    </header>
+    <div class="div">
+        Simpson's Online Consultation
+    </div>
+    <div id ="cent">
+        <h1>COVID-19 Symptom Checker</h1><br/>
+        <h1 style="color: green;">Recommendation: Monitor for symptoms from home</h1><br/>
+        <p>Monitor for symptoms of cough, fever over 100.4°F or shortness of breath at home. If you do not have symptoms, you do not need to be tested for COVID-19. Whether or not you are tested, treatment is the same.</p>
+        <br/>
+
+        <p style="font-weight: bold">If you develop symptoms:</p>
+        <ul style="list-style-type:disc">
+            <li>If you develop a cough, fever over 100.4°F or shortness of breath, contact your primary care provider to determine if you should be tested.</li>
+        </ul>
+        <br/>
+        
+        <p style="font-weight: bold">To lower your risk of COVID-19 exposure:</p>
+        <ul style="list-style-type:disc">
+            <li>Practice social distancing. Stay at least 6 feet away from others and avoid contact with people who may be infected. Avoid leaving the house unnecessarily.</li>
+            <li>Wash your hands often with soap and water. Use hand sanitizers with an alcohol level of 60% or greater if soap and water is not available.</li>
+            <li>Avoid touching your face.</li>
+            <li>Cough/sneeze into your elbow.</li>
+            <li>Use disinfectant to clean objects and surfaces that you frequently touch.</li>
+            <li>Stay informed. Visit the <a href="../news.html" style="color:#05386B; font-weight: bold;">Simspons News Site</a> for the most current information on updated recommended measures of protection.</li>
+            <li>Come back and retake the COVID-19 symptom checker if you develop new or worsening symptoms.</li>
+        </ul>
+        <br/>
+        <button type="button" id ="symp_button"><a href="../consult.html">Reset</a></button>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html>

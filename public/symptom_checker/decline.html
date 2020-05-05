@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSC Consult</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <header class="div">
+        <div class="title">WORLDWIDE&nbsp;&nbsp;STATISTICS&nbsp;&nbsp;ON&nbsp;&nbsp;CORONAVIRUS</div>
+        <div class="sessionMenu">
+            <ul>
+                <li class="menuButton"><a href="#"><i class="fa fa-align-justify"></i></a>
+                    <div class="menuItems">
+                        <ul>
+                            <li><a href="../index.html">Dashboard</a></li>
+                            <li><a href="../news.html">News</a></li>
+                            <li><a href="../consult.html">Consult</a></li>
+                            <li><a href="../login.html" class="notLoggedIn">Login</a></li>
+                            <li><a href="../insert.html" class="isLoggedIn">Update Case</a></li>
+                            <li><a href="../index.html" class="isLoggedIn" onclick="handlelogout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <script src="js/main.js"></script>
+    </header>
+    <div class="div">
+        Simpson's Online Consultation
+    </div>
+    <div id ="cent">
+        <h1>COVID-19 Symptom Checker</h1><br/><br/>
+        <p>To learn more about COVID-10 Stats please visit our <a href="../index.html" style="color:#05386B; font-weight: bold;">Dashboard</a></p>
+        <br/>
+        <button type="button" id ="symp_button"><a href="../consult.html">Reset</a></button>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html>
