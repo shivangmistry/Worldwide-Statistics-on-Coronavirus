@@ -8,7 +8,8 @@ exports.test = function (req, res) {
 };
 
 exports.mapData_get = function(req, res) {
-    const lastDate = "04-17-2020";
+    const lastDate = "05-04-2020";
+    // const lastDate = "04-17-2020";
     // Records.aggregate([
     //     { $match: { Date: lastDate } },
     //     {
@@ -49,7 +50,8 @@ exports.mapData_get = function(req, res) {
 }
 
 exports.record_get = function (req, res) {
-    const lastDate = "04-17-2020";
+    // const lastDate = "04-17-2020";
+    const lastDate = "05-04-2020";
     let returnObj = {};
     Records.aggregate([
         { $match: { Date: lastDate } },
@@ -137,7 +139,8 @@ exports.record_get = function (req, res) {
 exports.record_country_get = function(req, res) {
     let returnObj = {}
     const countryName = req.params.countryId;
-    const lastDate = "04-17-2020";
+    // const lastDate = "04-17-2020";
+    const lastDate = "05-04-2020";
 
     Records.aggregate([
         { $match: { Date: lastDate, Country: countryName } },
