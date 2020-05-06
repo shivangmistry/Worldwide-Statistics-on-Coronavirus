@@ -104,7 +104,7 @@
             </div>
 
             <!-- ********************** -->
-            <div class="graphDiv">
+            <div class="graphDiv" aria-label="Table Graph">
                 <div class="div tabDailyButtonsDiv">
                     <i class="fa fa-globe" onclick="changeCountry()"></i>
                     <button class="tabButton activeTab" id="confirmedDailyButton" onclick="confirmedDailyData()">Confirmed</button>
@@ -116,7 +116,7 @@
         </div>
     </div>
         <div class="rightDiv">
-            <div class="div genderDiv" >
+            <div class="div genderDiv"  aria-label="Gender Graph">
                 Gender Stats: <span class="currentCountry"></span>
                 <div id="Gender_Charts"></div>
             </div>
@@ -124,9 +124,9 @@
                 Confirmed Cases by Age Group
                 <div id= "ageInsideDiv"></div>
             </div>
-            <div class="div creditsDiv">
+            <div class="div creditsDiv" aria-label="Graphs Div">
                 <div class="innerCreditsDiv">
-                    <marquee scrollamount="2" behavior="scroll" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
+                    <marquee scrollamount="6" behavior="scroll" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
                     <ul>
                         <li>Reference:</li>
                         <li>
@@ -151,6 +151,14 @@
                         <li><span>28 new cases and 3 new deaths in Norway<a id="soucreText" href="https://www.vg.no/spesial/2020/corona/" target="_blank"> [Source]</a></span></li>
                         <li><span>6032 new cases and 674 new deaths in the United Kingdom <a id="soucreText" href="https://coronavirus.data.gov.uk/" target="_blank"> [Source]</a></span></li>
                         <li><span>102 new cases and 2 new deaths in Morocco <a  id="soucreText" href="http://www.covidmaroc.ma/Pages/AccueilAR.aspx" target="_blank"> [Source]</a></span></li>
+
+                        <li><span>1,238 new cases and 37 new deaths in Brazil<a  id="soucreText" href="https://g1.globo.com/bemestar/coronavirus/noticia/2020/05/05/casos-de-coronavirus-e-numero-de-mortes-no-brasil-em-5-de-maio.ghtml" target="_blank"> [Source]</a></span></li>
+                        <li><span>2 new cases and 1 new death in New Zealand<a id="soucreText" href="https://www.health.govt.nz/our-work/diseases-and-conditions/covid-19-novel-coronavirus/covid-19-current-situation/covid-19-current-cases" target="_blank"> [Source]</a></span></li>
+                        <li><span>24,798 new cases and 2,350 new deaths in the United States<a id="soucreText" href="https://www.worldometers.info/coronavirus/country/us/" target="_blank"> [Source]</a></span></li>
+                        <li><span>98 new cases and 1 new death in Oman<a  id="soucreText" href="https://twitter.com/omanimoh/status/1257582501817733120?s=21" target="_blank"> [Source]</a></span></li>
+                        <li><span>175 new cases and 20 new deaths in Japan<a id="soucreText" href="https://www.mhlw.go.jp/stf/houdou/houdou_list_202004.html" target="_blank"> [Source]</a></span></li>
+                        <li><span>32 new cases and 1 new death in Côte d'Ivoire <a id="soucreText" href="https://www.facebook.com/pg/Mshpci/posts/?ref=page_internal" target="_blank"> [Source]</a></span></li>
+                        <li><span>1 new case in Nicaragu <a  id="soucreText" href="http://www.minsa.gob.ni/" target="_blank"> [Source]</a></span></li>
                     </ul>
                 </marquee>
                 </div>
