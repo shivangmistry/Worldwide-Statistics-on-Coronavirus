@@ -141,7 +141,7 @@ function initageData(){
            height: 260,
           pieHole: 0.4,
           backgroundColor:"#FFF",
-          colors: ['#f6c7b6','#f3b49f','#ec8f6e','#e6693e','#e0440e'],
+          colors: ['#d6d6d6', '#f0b1b4', '#e66368', '#962025', '#300204'],
           chartArea: {
             left: "3%",
             top: "5%",
@@ -264,7 +264,7 @@ function initBarGenderView(BarData){
           width:'100%',
           legend: {position: 'bottom'},
           backgroundColor:"#FFF",
-          colors: ['#f6c7b6', '#e0440e'],
+          colors: ['#e66368', '#300204'],
           hAxis: {
             textStyle: {
                 color: '#000'
