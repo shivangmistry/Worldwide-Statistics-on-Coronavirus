@@ -1,11 +1,8 @@
 body {
-    /* background-color: black; */
     margin: 0 8px;
     padding: 0;
     text-align: center;
     color: rgb(220, 220, 220);
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-    /* font-family: 'Roboto Slab'; */
     font-family: 'Lato', sans-serif;
 }
 
@@ -102,24 +99,6 @@ ul {
 }
 /* dropdown - end */
 
-.loginForm {
-    margin: 100px auto;
-    padding: 20px 20px 0 20px;
-    max-width: 300px;
-    border-radius: 10px;
-    background-color: rgb(40, 40, 40);
-    border: 1px solid rgb(80, 80, 80);
-}
-
-.loginForm input {
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.loginForm input[type="submit"], .loginForm input[type="button"] {
-    width: 100%;
-}
-
 /* left div - start */
 .leftDiv {
     width: 20%;
@@ -127,7 +106,7 @@ ul {
 }
 
 .tabButtonsDiv {
-    height: 92.5vh;
+    height: 92.3vh;
 }
 
 .fa-globe {
@@ -147,7 +126,6 @@ ul {
     outline: none;
     cursor: pointer;
     transition: 0.3s;
-    /* background-color: red; */
     background-color: #05386B;
     color: rgb(220, 220, 220);
 }
@@ -171,14 +149,15 @@ ul {
 
 .tabContent {
     position: absolute;
-    top: 69.5px;
+    /* top: 69.5px; */
+    bottom: 6px;
     left: 8.5px;
     color: rgb(35, 35, 35);
 }
 
 .tableDiv {
     padding-top: 15px;
-    width: 19.39vw;
+    width: 19.49vw;
     background-color: white;
 }
 
@@ -198,9 +177,9 @@ ul {
 
 tbody.casesTableBody {
     display: block;
-    overflow: auto;
-    height: 67.2vh;
-    width: 100%;
+    overflow-x: hidden;
+    height: 64.9vh;
+    max-width: 100%;
     background-color: white;
     color: rgb(30, 30, 30);
 }
@@ -250,6 +229,7 @@ tbody.casesTableBody {
 .centerDiv {
     width: 58%;
     margin-left: 8px;
+    overflow-x: hidden;
 }
 
 .mapDiv {
@@ -265,12 +245,12 @@ tbody.casesTableBody {
 .rightDiv {
     width: 22%;
     margin-left: 8px;
+    overflow-x: hidden;
 }
 
 .genderDiv {
     height: 38vh;
     width: 100%;
-    /* background-color: red; */
 }
 
 .ageDiv {
@@ -282,7 +262,7 @@ tbody.casesTableBody {
 }
 
 .creditsDiv {
-    height: 14.4vh;
+    height: 14.2vh;
     background-color: white;
     color: black;
 }
@@ -327,7 +307,6 @@ tbody.casesTableBody {
 }
 
 .container {
-    /* background-color: rgb(30, 30, 30); */
     background-color: white;
     border: 1px solid rgb(80, 80, 80);
     border-radius: 20px;
@@ -339,15 +318,16 @@ tbody.casesTableBody {
 .tabDailyButtonsDiv {
     height: 30vh;
 }
+
 /* Style the tab for Graphs of Daily Confirmed and Daily Dead */
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #080808;
-  }
+}
   
-  /* Style the buttons inside the tab */
-  .tab button {
+/* Style the buttons inside the tab */
+.tab button {
     background-color: inherit;
     float: left;
     border: none;
@@ -356,23 +336,24 @@ tbody.casesTableBody {
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
-  }
+}
   
-  /* Change background color of buttons on hover */
-  .tab button:hover {
+/* Change background color of buttons on hover */
+.tab button:hover {
     background-color: #ddd;
-  }
+}
   
-  /* Create an active/current tablink class */
-  .tab button.active {
+/* Create an active/current tablink class */
+.tab button.active {
     background-color: #ccc;
-  }
+}
   
-  /* Style the tab content */
-  .tabDailyContent {
+/* Style the tab content */
+.tabDailyContent {
+    width: 56.75%;
+    height: 26vh;
     position: absolute;
-    bottom: 9px;
-    width: 56.82%;
+    bottom: 6px;
 }
 
 #confirmedDailyButton {
@@ -384,12 +365,13 @@ tbody.casesTableBody {
 }
 
 .newsTab {
-    margin: 20px auto;
+    margin: 10px auto;
     width: fit-content;
     border-radius: 10px;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2);
     overflow-y: auto;
 }
+
 /* Symptom Checker styling */
 #cent {
     position:absolute;
@@ -404,7 +386,7 @@ tbody.casesTableBody {
   }
 
   #symp_button {
-    background-color: #05386B; /* Green */
+    background-color: #05386B;
     display: flex;
     border: none;
     color: white;

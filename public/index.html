@@ -22,9 +22,6 @@
                             <li><a href="index.html">Dashboard</a></li>
                             <li><a href="news.html">News</a></li>
                             <li><a href="consult.html">Consult</a></li>
-                            <!-- <li><a href="login.html" class="notLoggedIn">Login</a></li>
-                            <li><a href="insert.html" class="isLoggedIn">Update Case</a></li>
-                            <li><a href="index.html" class="isLoggedIn" onclick="handlelogout()">Logout</a></li> -->
                         </ul>
                     </div>
                 </li>
@@ -33,8 +30,8 @@
         <script src="js/main.js"></script>
     </header>
     <section>
-        <div class="leftDiv">
-            <div class="div tabButtonsDiv">
+        <div class=" div leftDiv">
+            <div class="tabButtonsDiv">
                 <i class="fa fa-globe" onclick="changeCountry()"></i>
                 <button class="tabButton activeTab" id="confirmedButton" onclick="confirmedData()">Confirmed</button>
                 <button class="tabButton" id="deathsButton" onclick="deathData()">Deaths</button>
@@ -99,22 +96,18 @@
             </div>
         </div>
         <div class="centerDiv">
-            <div class="div mapDiv" id="map">
-                <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnFY9KoVBajKdQ1CRzvwCmDJxS4YWUP1I&callback=initMap" async defer></script> -->
-            </div>
+            <div class="div mapDiv" id="map"></div>
 
-            <!-- ********************** -->
             <div class="graphDiv" aria-label="Table Graph">
                 <div class="div tabDailyButtonsDiv">
                     <i class="fa fa-globe" onclick="changeCountry()"></i>
                     <button class="tabButton activeTab" id="confirmedDailyButton" onclick="confirmedDailyData()">Confirmed</button>
                     <button class="tabButton" id="DailydeathsButton" onclick="deathDailyData()">Deaths</button>
                 </div>
-                <div class="tabDailyContent confirmedDailyDiv" id = "DailyConfirmedCases"></div>
-                <!-- <div class="tabDailyContent DailydeathsDiv" id = "DailyDeathCases"></div>  -->
+                
+                <div class="tabDailyContent" id = "DailyConfirmedCases"></div>
             </div>
         </div>
-    </div>
         <div class="rightDiv">
             <div class="div genderDiv"  aria-label="Gender Graph">
                 Gender Stats: <span class="currentCountry"></span>

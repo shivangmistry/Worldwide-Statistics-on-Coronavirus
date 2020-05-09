@@ -9,27 +9,6 @@ exports.test = function (req, res) {
 
 exports.mapData_get = function(req, res) {
     const lastDate = "05-04-2020";
-    // const lastDate = "04-17-2020";
-    // Records.aggregate([
-    //     { $match: { Date: lastDate } },
-    //     {
-    //         $group: {
-    //             _id:
-    //             {
-    //                 "Country": "$Country",
-    //                 "Province": "$Province",
-    //                 "Latitude": "$Latitude",
-    //                 "Longitude": "$Longitude"
-    //             },
-    //             confirmed: { $sum: "$Confirmed" },
-    //             deaths: { $sum: "$Deaths" },
-    //             recovered: { $sum: "$Recovered" },
-    //         }
-    //     }
-    // ], (err, result) => {
-    //     if (err) res.send({ "message": "error", "data": "Error loading global map data" })
-    //     res.send({"message":"success", "geoLocation":result});
-    // });
     Records.aggregate([
         { $match: { Date: lastDate } },
         {
@@ -219,7 +198,6 @@ exports.record_country_get = function(req, res) {
                     ], (err5, result5) => {
                     if (err5) res.send({ "message": "error", "data": "Error loading daily Gender cases for country: " + countryName })
                     returnObj.CountryGenderCases = result5;
-                    console.log(result5);
                     returnObj.message = "success";
                     res.send(returnObj);
                     });
